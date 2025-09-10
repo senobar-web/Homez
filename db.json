@@ -1,0 +1,442 @@
+{
+  "realEstate": [
+    {
+      "id": "1",
+      "price": 9800,
+      "title": "خانه خانوادگی لوکس",
+      "city": "خوزستان",
+      "bathroom": 2,
+      "room": 6,
+      "meterage": 400,
+      "status": "برای فروش",
+      "img": "/img/p14.webp",
+      "category": "خانه"
+    },
+    {
+      "id": "2",
+      "price": 4800,
+      "title": " خلیج زرق و برق دار ویلا",
+      "city": "-شهید دانش خوزستان",
+      "bathroom": 2,
+      "room": 8,
+      "meterage": 300,
+      "status": "برای فروش",
+      "img": "/img/p1.webp",
+      "category": "ویلا"
+    },
+    {
+      "id": "3",
+      "price": 2850,
+      "title": "آپارتمان استخر اسکایپر",
+      "city": " خوزستان - دهستان شیخ فضل الله",
+      "bathroom": 1,
+      "room": 4,
+      "meterage": 200,
+      "status": "برای فروش",
+      "img": "/img/p4.webp",
+      "category": "آپارتمان"
+    },
+    {
+      "id": "4",
+      "price": 3500,
+      "title": "آرلو  آپارتمان",
+      "city": "خوزستان  - شهید دانش",
+      "bathroom": 1,
+      "room": 3,
+      "meterage": 200,
+      "status": "برای فروش",
+      "img": "/img/p13.webp",
+      "category": "آپارتمان"
+    },
+    {
+      "id": "5",
+      "price": 550,
+      "title": "سلوی  آپارتمان",
+      "city": "خوزستان - دهستان شیخ فضل الله",
+      "bathroom": 1,
+      "room": 4,
+      "meterage": 300,
+      "status": "برای اجاره",
+      "img": "/img/p2-1.webp",
+      "category": "آپارتمان"
+    },
+    {
+      "id": "6",
+      "price": 599,
+      "title": "خیابان دیلارد شمالی",
+      "city": "تهران خیابان ولیعصر",
+      "bathroom": 1,
+      "room": 4,
+      "meterage": 300,
+      "status": "برای اجاره",
+      "img": "/img/p15-2.webp",
+      "category": "آپارتمان"
+    },
+    {
+      "id": "7",
+      "price": 120,
+      "title": "خانه خانوادگی لوکس",
+      "city": "تفرش خیابان فیاض بخش",
+      "bathroom": 1,
+      "room": 4,
+      "meterage": 200,
+      "status": "برای اجاره",
+      "img": "/img/p7-3.webp",
+      "category": "خانه"
+    },
+    {
+      "id": "8",
+      "price": 150,
+      "title": "خیابان دیلارد شمالی",
+      "city": "تفرش خیابان بازار",
+      "bathroom": 1,
+      "room": 3,
+      "meterage": 150,
+      "status": "برای اجاره",
+      "img": "/img/p11-2.webp",
+      "category": "آپارتمان"
+    }
+  ],
+  "estate": [
+    {
+      "id": "1",
+      "price": 9800,
+      "title": "خانه خانوادگی لوکس",
+      "city": "خوزستان",
+      "bathroom": 2,
+      "room": 6,
+      "meterage": 400,
+      "status": "برای فروش",
+      "img": "/img/p14.webp"
+    },
+    {
+      "id": "2",
+      "price": 4800,
+      "title": " خلیج زرق و برق دار ویلا",
+      "city": "-شهید دانش خوزستان",
+      "bathroom": 2,
+      "room": 8,
+      "meterage": 300,
+      "status": "برای فروش",
+      "img": "/img/p1.webp"
+    },
+    {
+      "id": "3",
+      "price": 2850,
+      "title": "  آپارتمان استخر اسکایپر ",
+      "city": " خوزستان - دهستان شیخ فضل الله ",
+      "bathroom": 1,
+      "room": 4,
+      "meterage": 200,
+      "status": "برای فروش",
+      "img": "/img/p4.webp"
+    },
+    {
+      "id": "4",
+      "price": 3500,
+      "title": " آرلو  آپارتمان ",
+      "city": " خوزستان  - شهید دانش ",
+      "bathroom": 1,
+      "room": 3,
+      "meterage": 200,
+      "status": "برای فروش",
+      "img": "/img/p13.webp"
+    }
+  ],
+  "newsletter": [
+    {
+      "id": "ea7f",
+      "email": "ali@gmail.com"
+    }
+  ],
+  "contactForm": [
+    {
+      "id": "3e38",
+      "firstname": "ali",
+      "lastName": "karimi",
+      "email": "karimi@gmail.com",
+      "body": "ok"
+    },
+    {
+      "id": "f4f4",
+      "firstname": "ali",
+      "lastName": "hgfh",
+      "email": "a@gmail.com",
+      "body": "gdfgg"
+    }
+  ],
+  "comments": [
+    {
+      "id": "3545",
+      "name": "علی محمدی",
+      "email": "ali@gmail.com",
+      "viewpoint": "خیلی خوب بود",
+      "rating": 2
+    }
+  ],
+  "TourRequestForm": [
+    {
+      "id": "1c94",
+      "username": "reza",
+      "email": "b@gmail.com",
+      "phone": "9123453245",
+      "message": "perfect",
+      "value": "2025-07-14T06:54:43.528Z"
+    },
+    {
+      "id": "8ba5",
+      "username": "ali",
+      "email": "a@gmail.com",
+      "phone": "9123453245",
+      "message": "gdg cdfgdg",
+      "value": "2025-08-10T18:59:07.686Z"
+    },
+    {
+      "id": "39e6",
+      "username": "reza",
+      "email": "b@gmail.com",
+      "phone": "9123453245",
+      "message": "good",
+      "value": "2025-08-10T19:18:07.205Z",
+      "time": "12:30 PM"
+    },
+    {
+      "id": "011c",
+      "username": "reza",
+      "email": "b@gmail.com",
+      "phone": "9123453245",
+      "message": "ok",
+      "value": "2025-08-10T19:21:37.030Z",
+      "time": "11:00 AM"
+    },
+    {
+      "id": "196f",
+      "username": "grtg",
+      "email": "a@gmail.com",
+      "phone": "9123453245",
+      "message": "ok",
+      "value": "2025-08-13T05:14:41.573Z",
+      "time": "11:30 AM"
+    }
+  ],
+  "register": [
+    {
+      "id": "9448",
+      "username": "ali reza",
+      "email": "reza@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "5671",
+      "username": "sde",
+      "email": "s@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "9af4",
+      "username": "assal",
+      "email": "a@gmail.com",
+      "password": "1234567"
+    },
+    {
+      "id": "4360",
+      "username": "alid",
+      "email": "b@gmail.com",
+      "password": "1234567"
+    }
+  ],
+  "login": [],
+ "popularFeaturesItems":[
+    {
+    "id":1,
+    "price":9800,
+    "title":"خانه خانوادگی لوکس",
+    "city":"خوزستان",
+    "bathroom":2,
+    "room":6,
+    "meterage":400,
+    "status":"برای فروش",
+    "img":"/img/p14.webp"
+    },
+    {
+    "id":2,
+    "price":4800,
+    "title": "خلیج زرق و برق دار ویلا",
+    "city":"-شهید دانش خوزستان",
+    "bathroom":2,
+    "room":8,
+    "meterage":300,
+    "status":"برای فروش",
+    "img":"/img/p1.webp"
+    },
+    {
+    "id":3,
+    "price":2850,
+    "title":"آپارتمان استخر اسکایپر",
+    "city":"خوزستان - دهستان شیخ فضل الله",
+    "bathroom":1,
+    "room":4,
+    "meterage":200,
+    "status":"برای فروش",
+    "img":"/img/p4.webp"
+    },
+      {
+    "id":4,
+    "price":3500,
+    "title":"آرلو آپارتمان",
+    "city":"خوزستان - شهید دانش",
+    "bathroom":1,
+    "room":3,
+    "meterage":200,
+    "status":"برای فروش",
+    "img":"/img/p13.webp"
+    },
+    {
+    "id":5,
+    "price":550,
+    "title":"سلوی  آپارتمان",
+    "city":"خوزستان - دهستان شیخ فضل الله",
+    "bathroom":1,
+    "room":4,
+    "meterage":300,
+    "status":"برای اجاره",
+    "img":"/img/p2-1.webp"
+    },
+    {
+    "id":6,
+    "price":599,
+    "title":"خیابان دیلارد شمالی",
+    "city":"تهران خیابان ولیعصر",
+    "bathroom":1,
+    "room":4,
+    "meterage":300,
+    "status":"برای اجاره",
+    "img":"/img/p15-2.webp"
+    },
+    {
+    "id":7,
+    "price":120,
+    "title":"خانه خانوادگی لوکس",
+    "city":"تفرش خیابان فیاض بخش",
+    "bathroom":1,
+    "room":4,
+    "meterage":200,
+    "status":"برای اجاره",
+    "img":"/img/p7-3.webp"
+    },
+    {
+    "id":8,
+    "price":150,
+    "title":"خیابان دیلارد شمالی",
+    "city":"تفرش خیابان بازار",
+    "bathroom":1,
+    "room":3,
+    "meterage":150,
+    "status":"برای اجاره",
+    "img":"/img/p11-2.webp"
+    }
+],
+ "BlogsItems": [
+  {
+    "id": 1,
+    "title": "دسته بندی نشده",
+    "month": "اسفند",
+    "day": 22,
+    "des": "مشاوره خرید  ملک از هومز",
+    "img": "/img/p13.jpg"
+  },
+  {
+    "id": 2,
+    "title": "خانه شهر",
+    "month": "بهمن",
+    "day": 14,
+    "des": "چگونه سال ساخت خانه را پیدا کنیم؟",
+    "img": "/img/p11.webp"
+  },
+  {
+    "id": 3,
+    "title": "ویلا",
+    "month": "بهمن",
+    "day": 14,
+    "des": "خرید خانه با وام مسکن بدون اراق",
+    "img": "/img/p11.webp"
+  }
+],
+ "CheapestHousesItems": [
+  {
+    "id": 1,
+    "title": "پنت هوس ایتون ارش",
+    "city": "خوزستان مرکزی",
+    "price": 4500,
+    "room": 4,
+    "bathroom": 2,
+    "meterage": 300,
+    "status": "برای فروش",
+    "img": "/img/p16.webp"
+  },
+  {
+    "id": 2,
+    "title": "پنت هوس ایتون ماد",
+    "city": "خوزستان - شهید دانش",
+    "price": 580,
+    "room": 3,
+    "bathroom": 2,
+    "meterage": 180,
+    "status": "برای اجاره",
+    "img": "/img/p18.webp"
+  },
+  {
+    "id": 3,
+    "title": "خانه خانوادگی لوکس",
+    "city": "خوزستان مرکزی",
+    "price": 4600,
+    "room": 6,
+    "bathroom": 2,
+    "meterage": 200,
+    "status": "برای  فروش",
+    "img": "/img/p2.webp"
+  }
+  
+],
+ "BesthouseItems" :[
+  {
+    "id": 1,
+    "title": "خرید ملک",
+    "btn": "نمایش بیشتر",
+    "img": "/img/icon1.svg"
+  },
+  {
+    "id": 2,
+    "title": "فروش ملک",
+    "btn": "درج آگهی",
+    "img": "/img/icon2.svg"
+  },
+  {
+    "id": 3,
+    "title": "اجاره ملک",
+    "btn": "نمایش بیشتر",
+    "img": "/img/icon3.svg"
+  }
+],
+ "city" : [
+  { "id": 1, "title": "شیراز" },
+  { "id": 2, "title": "تهران" },
+  { "id": 3, "title": "اصفهان" },
+  { "id": 4, "title": "تفرش" },
+  { "id": 5, "title": "مشهد" }
+],
+ "popularSearch" : [
+  { "id": 1, "title": "آپارتمان های فروشی" },
+  { "id": 2, "title": "آپارتمان برای اجاره" },
+  { "id": 3, "title": "دفاتر برای فروش" },
+  { "id": 4, "title": "دفتر برای اجاره" }
+],
+ "quickAccess" : [
+  { "id": 1, "title": "شرایط استفاده" },
+  { "id": 2, "title": "حریم خصوصی" },
+  { "id": 3, "title": "قیمت گذاری" },
+  { "id": 5, "title": "فرصت های شغلی" },
+  { "id": 6, "title": "سوالات متداول " }
+]
+
+}
