@@ -15,7 +15,7 @@ export default function SidebarFilter({
   const { allRealEstate, checkedItems } = useContext(ContextItems);
   const data = allRealEstate.map((item) => item.category);
   const filtercheckbox = [...new Set(data)];
-  const uniqueCities = [...new Set(allRealEstate.map((item) => item.city))];
+  const uniqueCities = [...new Set(allRealEstate.map((item) => item.citycenter))];
   const uniqueRooms = [...new Set(allRealEstate.map((item) => item.room))];
   const handelRoomChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     onFilterChange({ selectedRoom: event.target.value });
@@ -142,10 +142,10 @@ export default function SidebarFilter({
             value={selectedCity}
           >
             <option value="">انتخاب بر اساس شهر</option>
-            {uniqueCities.map((city) => (
-              <option key={city} value={city}>
+            {uniqueCities.map((citycenter) => (
+              <option key={citycenter} value={citycenter}>
                 {" "}
-                {city}
+                {citycenter}
               </option>
             ))}
           </select>
