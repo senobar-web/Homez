@@ -32,7 +32,7 @@ export default function PropertyType() {
       item.price >= filters.priceRange[0] &&
       item.price <= filters.priceRange[1];
     const filteredCity = filters.selectedCity
-      ? item.city === filters.selectedCity
+      ? item.citycenter === filters.selectedCity
       : allRealEstate;
     const filteredRoom = filters.selectedRoom
       ? item.room == filters.selectedRoom
