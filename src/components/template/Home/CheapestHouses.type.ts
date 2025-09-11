@@ -9,4 +9,5 @@ export type CheapestHousesItem ={
     status:string,
     img:string,
     category:string,
+    citycenter:string
 }
