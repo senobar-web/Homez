@@ -34,9 +34,9 @@ export default function TopHeader() {
         <div>
           <RxHamburgerMenu className="w-6 h-6 text-black" />
         </div>
-        <div>
+        <Link to='/'>
           <img src="./img/logodark.svg" alt="logo" />
-        </div>
+        </Link>
         <Link to={`/login`}>
           <FaRegUserCircle className="w-6 h-6 text-black" />
         </Link>
