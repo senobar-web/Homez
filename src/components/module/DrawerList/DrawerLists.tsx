@@ -1,10 +1,9 @@
 import { useContext, useState } from "react";
 import { IoClose } from "react-icons/io5";
-import { CiInstagram } from "react-icons/ci";
-import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { ContextItems } from "../Context/ItemsContext";
 import {  useNavigate } from "react-router-dom";
+import Socialmedia from "../SocialMedia/Socialmedia";
 
 export default function DrawerLists() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -26,7 +25,7 @@ export default function DrawerLists() {
       {isOpen && (
         <>
           <div className="overlay" onClick={() => setIsOpen(!isOpen)}></div>
-          <div className="left-0 flex flex-col min-h-screen bg-white w-[400px] text-black  overflow-auto  shadow-3xl  pt-5 fixed top-0 bottom-0  z-50 transition-all">
+          <div className="left-0 flex flex-col min-h-screen bg-white w-[400px] text-black  overflow-auto  shadow-3xl  pt-5 fixed top-0 bottom-0  z-[9999] transition-all">
             {/* Cart Header */}
             <div className="flex px-5  items-center justify-between  w-full border-b border-b-gray-200  pb-5 ">
               <h2 className="text-2xl font-IRANSans-UltraLight text-black font-bold">
@@ -45,13 +44,6 @@ export default function DrawerLists() {
             <div className="w-full  ">
               <div className="flex flex-col pt-6 ">
                 {unique.map((category, index) => (
-                  // <Link
-                  //   key={index}
-                  //   to={`/property-type/${category}`}
-                  //   className="hover:border-r-2 border-r-red hover:bg-red-50 px-5 py-4 transition-all duration-75 ease-in "
-                  // >
-                  //   {category}
-                  // </Link>
                   <span key={index} onClick={()=>handelClick(category)} className="cursor-pointer hover:border-r-2 border-r-red hover:bg-red-50 px-5 py-4 transition-all duration-75 ease-in">
                     {category}
                   </span>
@@ -72,12 +64,7 @@ export default function DrawerLists() {
               </div>
               <div className="flex justify-between  w-full py-8 px-5">
                 <h3>مارا دنبال کنید</h3>
-                <div className="flex  gap-5 cursor-pointer group ">
-                  <FaLinkedinIn className="hover:text-red transition ease-in delay-75 " />
-                  <CiInstagram className="hover:text-red transition ease-in delay-75 " />
-                  <FaFacebookF className="hover:text-red transition ease-in delay-75 " />
-                  <FaTwitter className="hover:text-red transition ease-in delay-75 " />
-                </div>
+                <Socialmedia/>
               </div>
             </div>
           </div>
