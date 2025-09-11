@@ -1,8 +1,7 @@
-// import NorthWestIcon from "@mui/icons-material/NorthWest";
 import Footer from "../../module/Footer/Footer";
 import TopHeader from "../../module/TopHeader/TopHeader";
-import LoginForm from "../../module/uerAccount/LoginForm";
-import RegisterForm from "../../module/uerAccount/registerForm";
+import LoginForm from "../../module/userAccount/LoginForm";
+import RegisterForm from "../../module/userAccount/registerForm";
 
 export default function Login() {
   return (
