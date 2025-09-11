@@ -15,7 +15,7 @@ export default function PopularSearch() {
         <h3 className="font-bold text-lg mb-5">جستجوی محبوب</h3>
         <ul>
           {popular.map((item: OptionsFooter) => (
-            <li>
+            <li key={item.id}>
               <a href="javascript:void(0)"> {item.title}</a>
             </li>
           ))}

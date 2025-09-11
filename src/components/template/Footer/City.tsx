@@ -15,7 +15,7 @@ export default function City() {
         <h3 className="font-bold text-lg mb-5"> استان ها</h3>
         <ul>
           {cityFooter.map((item: OptionsFooter) => (
-            <li>
+            <li key={item.id}>
               <a href=""> {item.title} </a>
             </li>
           ))}

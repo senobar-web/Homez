@@ -15,7 +15,7 @@ export default function Access() {
         <h3 className="font-bold text-lg mb-5 "> دسترسی سریع</h3>
         <ul>
           {access.map((item: OptionsFooter) => (
-            <li>
+            <li key={item.id}>
               <a href="javascript:void(0)"> {item.title} </a>
             </li>
           ))}
