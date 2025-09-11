@@ -10,7 +10,8 @@
       "meterage": 400,
       "status": "برای فروش",
       "img": "/img/p14.webp",
-      "category": "خانه"
+      "category": "خانه",
+      "citycenter":"خوزستان"
     },
     {
       "id": "2",
@@ -22,7 +23,8 @@
       "meterage": 300,
       "status": "برای فروش",
       "img": "/img/p1.webp",
-      "category": "ویلا"
+      "category": "ویلا",
+      "citycenter":"خوزستان"  
     },
     {
       "id": "3",
@@ -34,7 +36,8 @@
       "meterage": 200,
       "status": "برای فروش",
       "img": "/img/p4.webp",
-      "category": "آپارتمان"
+      "category": "آپارتمان",
+      "citycenter":"خوزستان"
     },
     {
       "id": "4",
@@ -46,7 +49,8 @@
       "meterage": 200,
       "status": "برای فروش",
       "img": "/img/p13.webp",
-      "category": "آپارتمان"
+      "category": "آپارتمان",
+      "citycenter":"خوزستان"
     },
     {
       "id": "5",
@@ -58,7 +62,8 @@
       "meterage": 300,
       "status": "برای اجاره",
       "img": "/img/p2-1.webp",
-      "category": "آپارتمان"
+      "category": "آپارتمان",
+      "citycenter":"خوزستان"
     },
     {
       "id": "6",
@@ -70,7 +75,8 @@
       "meterage": 300,
       "status": "برای اجاره",
       "img": "/img/p15-2.webp",
-      "category": "آپارتمان"
+      "category": "آپارتمان",
+      "citycenter":"تهران"
     },
     {
       "id": "7",
@@ -82,7 +88,8 @@
       "meterage": 200,
       "status": "برای اجاره",
       "img": "/img/p7-3.webp",
-      "category": "خانه"
+      "category": "خانه",
+      "citycenter":"تفرش"
     },
     {
       "id": "8",
@@ -94,7 +101,8 @@
       "meterage": 150,
       "status": "برای اجاره",
       "img": "/img/p11-2.webp",
-      "category": "آپارتمان"
+      "category": "آپارتمان",
+      "citycenter":"تفرش"
     }
   ],
   "estate": [
