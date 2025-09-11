@@ -34,36 +34,23 @@ export default function Logo() {
                 },
               }}
             >
-              <SwiperSlide className="w-[100px]">
-                {/* <a href="" className="block"> */}
-                <img src="/img/b1.jpg" alt="" className="w-[100px]" />
-                {/* </a> */}
+              <SwiperSlide>
+                <img src="/img/b1.jpg" alt="" />
               </SwiperSlide>
-
-              <SwiperSlide className="w-[100px]">
-                {/* <a href=""> */}
-                <img src="/img/b2.jpg" alt="" className="w-[100px]" />
-                {/* </a> */}
+              <SwiperSlide>
+                <img src="/img/b2.jpg" alt="" />
               </SwiperSlide>
-              <SwiperSlide className="w-[100px]">
-                {/* <a href=""> */}
-                <img src="/img/b3.jpg" alt="" className="w-[100px]" />
-                {/* </a> */}
+              <SwiperSlide>
+                <img src="/img/b3.jpg" alt="" />
               </SwiperSlide>
-              <SwiperSlide className="w-[100px]">
-                {/* <a href=""> */}
-                <img src="/img/b4.jpg" alt="" className="w-[100px]" />
-                {/* </a> */}
+              <SwiperSlide>
+                <img src="/img/b4.jpg" alt="" />
               </SwiperSlide>
-              <SwiperSlide className="w-[100px]">
-                {/* <a href=""> */}
-                <img src="/img/b5.jpg" alt="" className="w-[100px]" />
-                {/* </a> */}
+              <SwiperSlide>
+                <img src="/img/b5.jpg" alt="" />
               </SwiperSlide>
-              <SwiperSlide className="w-[100px]">
-                {/* <a href=""> */}
-                <img src="/img/b6.jpg" alt="" className="w-[100px]" />
-                {/* </a> */}
+              <SwiperSlide>
+                <img src="/img/b6.jpg" alt="" />
               </SwiperSlide>
             </Swiper>
           </div>
