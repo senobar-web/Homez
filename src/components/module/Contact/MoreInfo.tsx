@@ -25,7 +25,7 @@ export default function MoreInfo() {
                 لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم است
               </p>
             </div>
-            <div className="flex flex-col md:flex-row  md:items-end gap-5  lg:h-[66px] mt-5 ">
+            <div className="flex flex-col md:flex-row  md:items-end gap-5 lg:h-[66px] mt-5 ">
               <Link
                 to="/contact"
                 className=" h-full flex items-center gap-2 justify-center text-[#181A20] border border-black rounded-2xl bg-white hover:bg-black hover:text-white text-lg font-bold py-3 px-7  transition  duration-300 ease-in-out cursor-pointer"
