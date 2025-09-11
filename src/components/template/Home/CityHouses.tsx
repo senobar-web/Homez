@@ -27,7 +27,7 @@ export default function CityHouses() {
                 </div>
                 <div className="mb-6 font-bold space-y-6" data-aos="fade-up">
                   {options.map((item) => (
-                    <div className="flex items-center space-x-2">
+                    <div key={item.id} className="flex items-center space-x-2">
                       <span>{item.icon}</span>
                       <p> {item.title} </p>
                     </div>
