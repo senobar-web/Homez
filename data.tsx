@@ -9,6 +9,8 @@ import { PiNewspaperDuotone } from "react-icons/pi";
 import { MdOutlineShare } from "react-icons/md";
 import { TfiPrinter } from "react-icons/tfi";
 import { MdPlaylistAddCheckCircle } from "react-icons/md";
+import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
+import { CiInstagram } from "react-icons/ci";
 
 const titlesItem = [
   {
@@ -122,5 +124,11 @@ const featureItem = [
     title: "مشاهده تمام املاک",
   },
 ];
+const social = [
+  { id: 1, icon: <FaLinkedinIn className="hover:text-red transition ease-in delay-75 " /> },
+  { id: 2, icon: <CiInstagram className="hover:text-red transition ease-in delay-75 " /> },
+  { id: 3, icon: <FaTwitter className="hover:text-red transition ease-in delay-75 " /> },
+  { id: 4, icon: <FaFacebookF className="hover:text-red transition ease-in delay-75 " /> },
+];
 
-export { titlesItem, ApartmentItems, shapeIcon, featureItem };
+export { titlesItem, ApartmentItems, shapeIcon, featureItem, social };
