@@ -1,3 +1,5 @@
+import Socialmedia from "../../module/SocialMedia/Socialmedia";
+
 export default function Application() {
   return (
     <div>
@@ -70,7 +72,7 @@ export default function Application() {
       </div>
       <div className="mt-9">
         <h3>ما را در شبکه های اجتماعی دنبال کنید</h3>
-        <div>{/* social media icon  */}</div>
+        <div className="flex pr-16 mt-4 "><Socialmedia/></div>
       </div>
     </div>
   );
