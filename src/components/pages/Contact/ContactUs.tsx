@@ -14,11 +14,10 @@ export default function ContactUs() {
             <Form />
           </Map>
         </div>
-        {/* <div className="flex justify-start md:items-center md:justify-end px-2 mb-20 mt-16 md:-mt-130 lg:-mt-60  bg-red-400"> */}
-        <div className="flex justify-start md:items-center md:justify-end container px-2 mb-20 mt-16 md:-mt-130 lg:-mt-60  bg-red-400">
-          <div className="text-black  w-[450px] mb-10 px-2.5 md:px-5 bg-yellow-400">
-            <h3 className="text-black text-2xl font-bold mb-5 w-[150px]">
-              با تیم هومز  در ارتباط باشید!
+        <div className="flex justify-start md:items-center md:justify-end container px-2 mb-20 mt-16 md:-mt-130 lg:-mt-60">
+          <div className="text-black  md:w-[300px] lg:w-[450px]  mb-10 px-2.5 md:px-5">
+            <h3 className="text-black text-2xl w-full font-bold mb-5 ">
+              با تیم هومز در ارتباط باشید!
             </h3>
             <p>
               لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
