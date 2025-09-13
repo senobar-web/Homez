@@ -1,7 +1,6 @@
 import type { JSX } from "react";
-// import { IoMdArrowDropdown } from "react-icons/io";
+import { IoMdArrowDropdown } from "react-icons/io";
 import { Link } from "react-router-dom";
-import { Dropdown, DropdownItem } from "flowbite-react";
 
 export default function Navbar(): JSX.Element {
   return (
@@ -21,15 +20,15 @@ export default function Navbar(): JSX.Element {
         <div className="py-3 px-5 rounded-4xl hover:bg-gray-900  flex justify-center items-center text-white cursor-pointer">
           <h3 className=" text-sm font-bold "> وبلاگ</h3>
         </div>
-        {/* <div className=" relative py-2 px-8 rounded-4xl  hover:bg-gray-900  flex justify-center items-center text-white cursor-pointer "> */}
-          {/* <h3 className="text-white text-sm font-bold "> صفحات</h3>
+        <div className="relative group py-2 px-8 rounded-4xl  hover:bg-gray-900  flex justify-center items-center text-white cursor-pointer ">
+          <h3 className="text-white text-sm font-bold "> صفحات</h3>
           <IoMdArrowDropdown className="w-5 h-5" />
-          <ul className="opacity-0 invisible bg-white group-hover:opacity-100 group-hover:visible rounded-xl text-black w-[250px] absolute overflow-hidden top-12 shadow-2xl z-[9999] ">
+          <ul className="opacity-0 invisible bg-white group-hover:opacity-100 group-hover:visible rounded-xl text-black w-[250px] absolute overflow-hidden top-12 shadow-2xl z-[9999] transition-all  ">
             <li className="hover:bg-red-50 px-4 py-2 text-gray-700">
               <Link to="/contact">تماس با ما</Link>
             </li>
             <li className="hover:bg-red-50 px-4 py-2 text-gray-700">
-              <Link to="/about"> درباره .ما</Link>
+              <Link to="/about"> درباره ما</Link>
             </li>
             <li className="hover:bg-red-50 px-4 py-2 text-gray-700">
               <Link to="/non-existent-path"> 404</Link>
@@ -37,22 +36,8 @@ export default function Navbar(): JSX.Element {
             <li className="hover:bg-red-50 px-4 py-2  text-gray-700">
               <Link to="/login"> ورود / ثبت نام</Link>
             </li>
-          </ul> */}
-          <Dropdown label="صفحات" >
-              <DropdownItem as={Link} to="/contact" >
-                تماس با ما
-              </DropdownItem>
-              <DropdownItem as={Link} to="/about" >
-                درباره ما
-              </DropdownItem>
-              <DropdownItem as={Link} to="/login" >
-                ورود / ثبت نام
-              </DropdownItem>
-              <DropdownItem as={Link} to="/non-existent-path">
-                ۴۰۴
-              </DropdownItem>
-          </Dropdown>
-        {/* </div> */}
+          </ul>
+        </div>
       </nav>
     </>
   );
