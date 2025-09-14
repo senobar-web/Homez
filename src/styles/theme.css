@@ -1,0 +1,10 @@
+@theme{
+    --color-red :#EB6753;
+    --color-red-dark :#EE4C34;
+    --color-pink:#f78da7;
+    --color-gray-main:#181A20;
+    --color-gray-light:#717171;
+    --color-pink-light:#EB675312;
+    --shadow-xs:0 1px 4px 0 rgba(24, 26, 32, 0.07);
+   
+}
