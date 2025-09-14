@@ -27,6 +27,7 @@
     "axios": "^1.11.0",
     "flowbite-react": "^0.12.8",
     "i18next": "^25.5.1",
+    "json-server": "^1.0.0-beta.3",
     "jsonserver": "^0.1.6",
     "leaflet": "^1.9.4",
     "react": "^19.1.1",
