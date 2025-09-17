@@ -1,14 +1,14 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
-
+import { Api_Url } from "../../module/Api_url/API";
 export default function Newsletter() {
   const [email, setEmail] = useState("");
   const handelSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const res = await axios({
       method: "post",
-      url: "http://localhost:5000/newsletter",
+      url: `${Api_Url}/newsletter`,
       data: { email },
       headers: { "Content-Type": "application/json" },
     });
