@@ -13,7 +13,7 @@ export default function Footer() {
           <div className="flex flex-col lg:flex-row border-b-1 border-b-gray-800 lg:gap-x-20 pb-9">
             {/* right footer */}
             <div className="w-full lg:w-[30%] py-6">
-              <img src="/img/logo.svg" alt="" />
+              <img src="/img/logo.svg" alt="" loading="lazy" />
               <Application />
             </div>
             {/* left footer */}
