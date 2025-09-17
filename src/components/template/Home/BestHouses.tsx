@@ -4,11 +4,12 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Api_Url } from "../../module/Api_url/API";
 
 export default function BestHouses() {
-  const[items,setItems]=useState<BestHouse[]>([])
+  const [items, setItems] = useState<BestHouse[]>([]);
   useEffect(() => {
-    axios.get("http://localhost:5000/BesthouseItems").then((res) => {
+    axios.get(`${Api_Url}/BesthouseItems`).then((res) => {
       setItems(res.data);
     });
   }, []);
