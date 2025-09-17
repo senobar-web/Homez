@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import type { OptionsFooter } from "./option.type";
-
+import { Api_Url } from "../../module/Api_url/API";
 export default function Access() {
   const [access, setAccess] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:5000/quickAccess").then((res) => {
+    axios.get(`${Api_Url}/quickAccess`).then((res) => {
       setAccess(res.data);
     });
   }, []);
