@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import type { OptionsFooter } from "./option.type";
-
+import { Api_Url } from "../../module/Api_url/API";
 export default function City() {
   const [cityFooter, setCityFooter] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:5000/city").then((res) => {
+    axios.get(`${Api_Url}/city`).then((res) => {
       setCityFooter(res.data);
     });
   }, []);
