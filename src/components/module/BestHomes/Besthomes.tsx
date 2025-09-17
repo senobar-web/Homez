@@ -5,22 +5,33 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 
-export default function Besthomes({title,img,btn}:BestHouse) {
-   useEffect(() => {
-        AOS.init({
-          duration: 800, // Animation duration
-          easing: "ease-in-out", // Animation easing
-        });
-      }, []);
+export default function Besthomes({ title, img, btn }: BestHouse) {
+  useEffect(() => {
+    AOS.init({
+      duration: 800, // Animation duration
+      easing: "ease-in-out", // Animation easing
+    });
+  }, []);
   return (
     <>
-      <div className="py-9 shadow-lg rounded-lg w-full md:w-[30%]" data-aos="fade-up">
+      <div
+        className="py-9 shadow-lg rounded-lg w-full md:w-[30%]"
+        data-aos="fade-up"
+      >
         <div className="flex flex-col items-center gap-y-3.5 px-8">
           <div>
-            <img src={img} alt="" className="w-20 h-20  lg:size-[150px]" />
+            <img
+              src={img}
+              alt=""
+              className="w-20 h-20  lg:size-[150px]"
+              loading="lazy"
+            />
           </div>
           <div>
-            <h3 className="text-black text-xl lg:text-2xl font-bold"> {title}</h3>
+            <h3 className="text-black text-xl lg:text-2xl font-bold">
+              {" "}
+              {title}
+            </h3>
           </div>
           <div>
             <p className="text-black text-[14px] text-justify">
