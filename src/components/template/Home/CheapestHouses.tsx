@@ -6,11 +6,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Api_Url } from "../../module/Api_url/API";
 
 export default function CheapestHouses() {
   const [cheapestItems, setCheapestItems] = useState<CheapestHousesItem[]>([]);
   useEffect(() => {
-    axios.get("http://localhost:5000/CheapestHousesItems").then((res) => {
+    axios.get(`${Api_Url}/CheapestHousesItems`).then((res) => {
       setCheapestItems(res.data);
     });
   }, []);
