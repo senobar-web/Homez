@@ -52,7 +52,12 @@ export default function SearchBox() {
                 <li key={index}>
                   <div className="w-full">
                     <div className="flex items-center gap-x-8  border-b border-b-gray-200 group px-3.5 py-5 ">
-                      <img src={item?.img} alt="image" className="size-20" />
+                      <img
+                        src={item?.img}
+                        alt="image"
+                        className="size-20"
+                        loading="lazy"
+                      />
                       <div className="flex justify-between w-full ">
                         <div className="flex flex-col">
                           <h2 className=" text-black hover:underline text-[14px] cursor-pointer">
