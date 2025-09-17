@@ -66,7 +66,7 @@ export default function IndexAbout() {
       <section className="mb-6 lg:mb-10">
         <div className="container ">
           <div className="flex justify-center">
-            <img src="/img/banner..webp" alt="" />
+            <img src="/img/banner..webp" alt="" loading="lazy" />
           </div>
           <div className="text-gray-main md:mx-35 lg:px-12 mt-14 flex justify-between ">
             <div className="flex flex-col items-center ">
