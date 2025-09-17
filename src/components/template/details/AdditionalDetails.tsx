@@ -29,9 +29,10 @@ export default function AdditionalDetails() {
                 className="w-20 h-20 rounded-full"
                 src="/img/m14-.webp"
                 alt=""
+                loading="lazy"
               />
               <div className="font-medium text-[#182A20] ">
-                <div className="text-2xl">حامد خشای </div>
+                <div className="text-2xl">مینا خشای </div>
                 <div className="text-sm ">(+98)021-555-888</div>
               </div>
             </div>
@@ -41,7 +42,7 @@ export default function AdditionalDetails() {
           </div>
           <Form />
           <div className="shadow-xs mt-6 text-[#181A20] p-5 rounded-2xl bg-white">
-            <h3 className="mb-5 font-bold text-xl">ارسال پیام به حامد خشای</h3>
+            <h3 className="mb-5 font-bold text-xl">ارسال پیام به مینا خشای</h3>
             <a href="javascript:void(0)" className="hover:underline">
               لطفا برای ارسال پیام خصوصی وارد شوید
             </a>
