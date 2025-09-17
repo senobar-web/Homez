@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import type { OptionsFooter } from "./option.type";
-
+import { Api_Url } from "../../module/Api_url/API";
 export default function PopularSearch() {
   const [popular, setPopular] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:5000/popularSearch").then((res) => {
+    axios.get(`${Api_Url}/popularSearch`).then((res) => {
       setPopular(res.data);
     });
   }, []);
