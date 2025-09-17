@@ -35,22 +35,22 @@ export default function Logo() {
               }}
             >
               <SwiperSlide>
-                <img src="/img/b1.jpg" alt="" />
+                <img src="/img/b1.jpg" alt="" loading="lazy" />
               </SwiperSlide>
               <SwiperSlide>
-                <img src="/img/b2.jpg" alt="" />
+                <img src="/img/b2.jpg" alt="" loading="lazy" />
               </SwiperSlide>
               <SwiperSlide>
-                <img src="/img/b3.jpg" alt="" />
+                <img src="/img/b3.jpg" alt="" loading="lazy" />
               </SwiperSlide>
               <SwiperSlide>
-                <img src="/img/b4.jpg" alt="" />
+                <img src="/img/b4.jpg" alt="" loading="lazy" />
               </SwiperSlide>
               <SwiperSlide>
-                <img src="/img/b5.jpg" alt="" />
+                <img src="/img/b5.jpg" alt="" loading="lazy" />
               </SwiperSlide>
               <SwiperSlide>
-                <img src="/img/b6.jpg" alt="" />
+                <img src="/img/b6.jpg" alt="" loading="lazy" />
               </SwiperSlide>
             </Swiper>
           </div>
