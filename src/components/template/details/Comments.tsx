@@ -4,6 +4,7 @@ config.autoAddCss = false;
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ShowFedback from "./ShowFedback";
+import { Api_Url } from "../../module/Api_url/API";
 
 export default function Comments() {
   const [name, setName] = useState("");
@@ -23,7 +24,7 @@ export default function Comments() {
     }
     const res = await axios({
       method: "post",
-      url: "http://localhost:5000/comments",
+      url: `${Api_Url}/comments`,
       data: { name, email, viewpoint, rating, rememberMe },
       headers: { "Content-Type": "application/json" },
     });
@@ -44,14 +45,14 @@ export default function Comments() {
 
   return (
     <>
-      <ShowFedback/>
+      <ShowFedback />
       <div className="shadow-xs px-6 py-8  mt-14 bg-white rounded-2xl">
         <div>
           <h3 className="font-bold mb-5">یک نقد و بررسی اضافه کنید</h3>
           <div className="mb-7 flex items-center ">
             <p className="ml-4"> امتیاز:</p>
 
-            {[...Array(5)].map(( i) => {
+            {[...Array(5)].map((i) => {
               const ratingValue = i + 1;
               return (
                 <label>
