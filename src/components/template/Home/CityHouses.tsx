@@ -43,16 +43,16 @@ export default function CityHouses() {
             </div>
             <div className="hidden  lg:grid grid-cols-2 relative ">
               <div className="flex items-end" data-aos="zoom-in">
-                <img src="/img/h1.webp" alt="" />
+                <img src="/img/h1.webp" alt="" loading="lazy" />
               </div>
               <div data-aos="zoom-in">
-                <img src="/img/h2.webp" alt="" />
+                <img src="/img/h2.webp" alt="" loading="lazy" />
               </div>
               <div
                 className="absolute -bottom-30 z-30 left-55 "
                 data-aos="zoom-in"
               >
-                <img src="/img/ezgif.webp" alt="" />
+                <img src="/img/ezgif.webp" alt="" loading="lazy" />
               </div>
             </div>
           </div>
