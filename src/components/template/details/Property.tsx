@@ -7,13 +7,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import type { CheapestHousesItem } from "../Home/CheapestHouses.type";
 import { shapeIcon } from "../../../../data";
+import { Api_Url } from "../../module/Api_url/API";
 
 export default function Property() {
   const [icon, setIcon] = useState(shapeIcon);
   const { propertyID } = useParams();
   const [popularItems, setPopularItems] = useState<CheapestHousesItem[]>([]);
   useEffect(() => {
-    axios.get("http://localhost:5000/popularFeaturesItems").then((res) => {
+    axios.get(`${Api_Url}/popularFeaturesItems`).then((res) => {
       setPopularItems(res.data);
     });
   }, []);
@@ -74,6 +75,7 @@ export default function Property() {
             src={item?.img}
             alt=""
             className="w-full h-full  hover:scale-105 hover:cursor-pointer"
+            loading="lazy"
           />
         </div>
         <div className="grid grid-cols-2 gap-5 rounded-b-2xl sm:rounded-l-2xl sm:rounded-br-none overflow-hidden  ">
@@ -89,6 +91,7 @@ export default function Property() {
               src="/img/p6.webp"
               alt=""
               className="w-full h-full hover:scale-105 hover:cursor-pointer "
+              loading="lazy"
             />
           </div>
           <div className="overflow-hidden">
@@ -96,6 +99,7 @@ export default function Property() {
               src="/img/p6.webp"
               alt=""
               className="w-full h-full hover:scale-105 hover:cursor-pointer"
+              loading="lazy"
             />
           </div>
           <div className="overflow-hidden">
@@ -103,6 +107,7 @@ export default function Property() {
               src="/img/p11.jpg"
               alt=""
               className="w-full h-full hover:scale-105 hover:cursor-pointer "
+              loading="lazy"
             />
           </div>
         </div>
