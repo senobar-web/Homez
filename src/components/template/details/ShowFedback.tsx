@@ -3,19 +3,19 @@ import axios from "axios";
 import { FaCircleUser } from "react-icons/fa6";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { Api_Url } from "../../module/Api_url/API";
 
-type ShowFedbackProps={
-    name:string,
-    rating:number,
-    viewpoint:string
-
-}
+type ShowFedbackProps = {
+  name: string;
+  rating: number;
+  viewpoint: string;
+};
 export default function ShowFedback() {
   const [userMessage, setUserMessage] = useState<ShowFedbackProps[]>([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/comments")
+      .get(`${Api_Url}/comments`)
       .then((res) => setUserMessage(res.data))
       .catch((error) => console.error("error fetching comment", error));
   }, []);
