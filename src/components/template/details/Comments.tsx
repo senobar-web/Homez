@@ -2,9 +2,8 @@ import { FaStar } from "react-icons/fa";
 import { config } from "@fortawesome/fontawesome-svg-core";
 config.autoAddCss = false;
 import { useEffect, useState } from "react";
-import axios from "axios";
 import ShowFedback from "./ShowFedback";
-import { Api_Url } from "../../module/Api_url/API";
+import ApiRequest from "../../module/Api_url/ApiRequest";
 
 export default function Comments() {
   const [name, setName] = useState("");
@@ -22,13 +21,15 @@ export default function Comments() {
       localStorage.removeItem("User_name");
       localStorage.removeItem("User_email");
     }
-    const res = await axios({
-      method: "post",
-      url: `${Api_Url}/comments`,
-      data: { name, email, viewpoint, rating, rememberMe },
-      headers: { "Content-Type": "application/json" },
-    });
-    if (res.status === 201) {
+    const newComment = {
+      name,
+      email,
+      viewpoint,
+      rating,
+      rememberMe,
+    };
+    const response = await ApiRequest("/comments", "POST", newComment);
+    if (response.status === 201) {
       setViewpoint("");
       alert(" پیام ارسال شد");
     }
@@ -133,7 +134,6 @@ export default function Comments() {
                     <div className="flex items-center h-5">
                       <input
                         id="terms"
-                        // aria-describedby="terms"
                         type="checkbox"
                         className="w-4 h-4  "
                         required
