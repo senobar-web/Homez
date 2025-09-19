@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { ContextItems } from "../../module/Context/ItemsContext";
 import Slider from "@mui/material/Slider";
 import SearchButtons from "./Searchbuttons";
-import type {resSliderProps} from "./Sidebar.type"
+import type { resSliderProps } from "./Sidebar.type";
 
 export default function SidebarFilter({
   onFilterChange,
@@ -15,7 +15,7 @@ export default function SidebarFilter({
   const { allRealEstate, checkedItems } = useContext(ContextItems);
   const data = allRealEstate.map((item) => item.category);
   const filtercheckbox = [...new Set(data)];
-  const uniqueCities = [...new Set(allRealEstate.map((item) => item.citycenter))];
+  const uniqueCities = [...new Set(allRealEstate.map((item) => item.citycenter)),];
   const uniqueRooms = [...new Set(allRealEstate.map((item) => item.room))];
   const handelRoomChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     onFilterChange({ selectedRoom: event.target.value });
@@ -81,21 +81,18 @@ export default function SidebarFilter({
             </label>
           </div>
         </div>
-     
         {/* Type of Estate */}
         <div className="text-[#181A20]">
           <h3 className="mt-6 mb-3 font-bold"> نوع ملک</h3>
           {filtercheckbox.map((category) => (
-            <div className="flex items-center mb-4">
+            <div className="flex items-center mb-4" key={category}>
               <input
                 id="disabled-radio-1"
                 type="checkbox"
                 value={category}
                 name="disabled-radio"
                 className="w-4 h-4 "
-                // checked={selectedOptionCheck.includes(category)}
                 checked={checkedItems[category]}
-                // onChange={handelcheck}
                 onChange={handelcheck}
               />
               <label
