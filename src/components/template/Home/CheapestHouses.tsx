@@ -4,16 +4,19 @@ import { titlesItem } from "../../../../data";
 import type { CheapestHousesItem } from "./CheapestHouses.type";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
-import axios from "axios";
 import { useEffect, useState } from "react";
-import { Api_Url } from "../../module/Api_url/API";
+import ApiRequest from "../../module/Api_url/ApiRequest";
 
 export default function CheapestHouses() {
   const [cheapestItems, setCheapestItems] = useState<CheapestHousesItem[]>([]);
-  useEffect(() => {
-    axios.get(`${Api_Url}/CheapestHousesItems`).then((res) => {
-      setCheapestItems(res.data);
-    });
+   useEffect(() => {
+    const fetchPosts = async () => {
+      const response = await ApiRequest<CheapestHousesItem[]>(
+        "/CheapestHousesItems"
+      );
+      setCheapestItems(response.data);
+    };
+    fetchPosts();
   }, []);
   return (
     <>
