@@ -1,18 +1,13 @@
 import React from "react";
 import { useState } from "react";
-import axios from "axios";
-import { Api_Url } from "../../module/Api_url/API";
+import ApiRequest from "../../module/Api_url/ApiRequest";
 export default function Newsletter() {
   const [email, setEmail] = useState("");
   const handelSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const res = await axios({
-      method: "post",
-      url: `${Api_Url}/newsletter`,
-      data: { email },
-      headers: { "Content-Type": "application/json" },
-    });
-    if (res.status === 201) {
+    const newEmail = { email };
+    const response = await ApiRequest("/newsletter", "POST", newEmail);
+    if (response.status === 201) {
       setEmail("");
       alert("  شد ارسال");
     }
