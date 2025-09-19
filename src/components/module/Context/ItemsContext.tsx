@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import type { CheapestHousesItem } from "../../template/Home/CheapestHouses.type";
+import ApiRequest from "../Api_url/ApiRequest";
 
 type ContextItemsProviderProps = {
   children: React.ReactNode;
@@ -23,11 +24,11 @@ const ContextItemsProvider = ({ children }: ContextItemsProviderProps) => {
     }));
   };
   useEffect(() => {
-    fetch("http://localhost:5000/realEstate")
-      .then((res) => res.json())
-      .then((data) => {
-        setAllRealEstate(data);
-      });
+    const fetchPosts = async () => {
+      const response = await ApiRequest<CheapestHousesItem[]>("/realEstate");
+      setAllRealEstate(response.data);
+    };
+    fetchPosts();
   }, []);
   return (
     <ContextItems.Provider
