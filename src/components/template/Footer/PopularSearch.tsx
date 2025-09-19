@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import type { OptionsFooter } from "./option.type";
-import { Api_Url } from "../../module/Api_url/API";
+import ApiRequest from "../../module/Api_url/ApiRequest";
 export default function PopularSearch() {
-  const [popular, setPopular] = useState([]);
+  const [popular, setPopular] = useState<OptionsFooter[]>([]);
   useEffect(() => {
-    axios.get(`${Api_Url}/popularSearch`).then((res) => {
-      setPopular(res.data);
-    });
+    const fetchPosts = async () => {
+      const response = await ApiRequest<OptionsFooter[]>("/popularSearch");
+      setPopular(response.data);
+    };
+    fetchPosts();
   }, []);
   return (
     <div>
