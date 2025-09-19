@@ -1,8 +1,7 @@
-import axios from "axios";
 import { useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { Api_Url } from "../../module/Api_url/API";
+import ApiRequest from "../Api_url/ApiRequest";
 
 export default function Form() {
   const [firstname, setFirstname] = useState("");
@@ -11,13 +10,14 @@ export default function Form() {
   const [body, setBody] = useState("");
   const handelSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const res = await axios({
-      method: "post",
-      url: `${Api_Url}/contactForm`,
-      data: { firstname, lastName, email, body },
-      headers: { "Content-Type": "application/json" },
-    });
-    if (res.status === 201) {
+    const newPost = {
+      firstname,
+      lastName,
+      email,
+      body,
+    };
+    const response = await ApiRequest("/contactForm", "POST", newPost);
+    if (response.status === 201) {
       setFirstname("");
       setLastName("");
       setBody("");
