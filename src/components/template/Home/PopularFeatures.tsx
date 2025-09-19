@@ -7,14 +7,12 @@ import { Autoplay, Navigation } from "swiper/modules";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
-import axios from "axios";
 import type { CheapestHousesItem } from "./CheapestHouses.type";
-import { Api_Url } from "../../module/Api_url/API";
-
+import ApiRequest from "../../module/Api_url/ApiRequest";
 export default function PopularFeatures() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<CheapestHousesItem[]>([]);
   const [statuses, setStatuses] = useState<CheapestHousesItem[]>([]);
-  const [filteredData, setFilteredData] = useState([]);
+  const [filteredData, setFilteredData] = useState<CheapestHousesItem[]>([]);
   useEffect(() => {
     AOS.init({
       duration: 800,
@@ -22,15 +20,19 @@ export default function PopularFeatures() {
     });
   }, []);
   useEffect(() => {
-    axios.get(`${Api_Url}/popularFeaturesItems`).then((res) => {
-      const result = res.data;
+    const fetchPosts = async () => {
+      const response = await ApiRequest<CheapestHousesItem[]>(
+        "/popularFeaturesItems"
+      );
+      const result = response.data;
       setData(result);
       setFilteredData(result);
-      const uniqueCategories = [
-        ...new Set(result.map((item: CheapestHousesItem) => item.status)),
+      const uniqueCategories: string[] = [
+        ...new Set(result.map((item) => item.status)),
       ];
-      setStatuses(uniqueCategories);
-    });
+      setStatuses(uniqueCategories as unknown as CheapestHousesItem[]);
+    };
+    fetchPosts();
   }, []);
 
   const filterItem = (status: string) => {
