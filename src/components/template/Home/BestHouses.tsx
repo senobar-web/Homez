@@ -3,15 +3,16 @@ import type { BestHouse } from "../../module/BestHomes/Besthouse.types";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect, useState } from "react";
-import axios from "axios";
-import { Api_Url } from "../../module/Api_url/API";
+import ApiRequest from "../../module/Api_url/ApiRequest";
 
 export default function BestHouses() {
   const [items, setItems] = useState<BestHouse[]>([]);
   useEffect(() => {
-    axios.get(`${Api_Url}/BesthouseItems`).then((res) => {
-      setItems(res.data);
-    });
+    const fetchPosts = async () => {
+      const response = await ApiRequest<BestHouse[]>("/BesthouseItems");
+      setItems(response.data);
+    };
+    fetchPosts();
   }, []);
   useEffect(() => {
     AOS.init({
