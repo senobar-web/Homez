@@ -1,12 +1,11 @@
 import BlogItem from "../../module/Blog/BlogItem";
 import type { Blogs } from "../../module/Blog/Blog.type";
-import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect, useState } from "react";
-import { Api_Url } from "../../module/Api_url/API";
+import ApiRequest from "../../module/Api_url/ApiRequest";
 export default function Blog() {
   const [blogsItems, setBlogsItems] = useState<Blogs[]>([]);
   useEffect(() => {
@@ -16,9 +15,11 @@ export default function Blog() {
     });
   }, []);
   useEffect(() => {
-    axios.get(`${Api_Url}/BlogsItems`).then((res) => {
-      setBlogsItems(res.data);
-    });
+    const fetchPosts = async () => {
+      const response = await ApiRequest<Blogs[]>("/BlogsItems");
+      setBlogsItems(response.data);
+    };
+    fetchPosts();
   }, []);
   return (
     <>
