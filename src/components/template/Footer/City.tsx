@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import type { OptionsFooter } from "./option.type";
-import { Api_Url } from "../../module/Api_url/API";
+import ApiRequest from "../../module/Api_url/ApiRequest";
 export default function City() {
-  const [cityFooter, setCityFooter] = useState([]);
+  const [cityFooter, setCityFooter] = useState<OptionsFooter[]>([]);
   useEffect(() => {
-    axios.get(`${Api_Url}/city`).then((res) => {
-      setCityFooter(res.data);
-    });
+    const fetchPosts = async () => {
+      const response = await ApiRequest<OptionsFooter[]>("/city");
+      setCityFooter(response.data);
+    };
+    fetchPosts();
   }, []);
   return (
     <>
