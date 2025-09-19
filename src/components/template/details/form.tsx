@@ -2,8 +2,8 @@ import DatePicker from "react-multi-date-picker";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 import React, { useState } from "react";
-import axios from "axios";
-import { Api_Url } from "../../module/Api_url/API";
+import ApiRequest from "../../module/Api_url/ApiRequest";
+
 export default function Form() {
   const [value, setValue] = useState(new Date());
   const [username, setUsername] = useState("");
@@ -18,16 +18,18 @@ export default function Form() {
   const handleTimeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedTime(event.target.value);
   };
-
   const handelSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const res = await axios({
-      method: "post",
-      url: `${Api_Url}/TourRequestForm`,
-      data: { username, email, phone, message, value, selectedTime },
-      headers: { "Content-Type": "application/json" },
-    });
-    if (res.status === 201) {
+    const newData = {
+      username,
+      email,
+      phone,
+      message,
+      value,
+      selectedTime,
+    };
+    const response = await ApiRequest("/TourRequestForm", "POST", newData);
+    if (response.status === 201) {
       setEmail("");
       setUsername("");
       setPhone("");
