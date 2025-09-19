@@ -4,19 +4,22 @@ import { FaShower } from "react-icons/fa6";
 import { GiResize } from "react-icons/gi";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import type { CheapestHousesItem } from "../Home/CheapestHouses.type";
 import { shapeIcon } from "../../../../data";
-import { Api_Url } from "../../module/Api_url/API";
+import ApiRequest from "../../module/Api_url/ApiRequest";
 
 export default function Property() {
   const [icon, setIcon] = useState(shapeIcon);
   const { propertyID } = useParams();
   const [popularItems, setPopularItems] = useState<CheapestHousesItem[]>([]);
   useEffect(() => {
-    axios.get(`${Api_Url}/popularFeaturesItems`).then((res) => {
-      setPopularItems(res.data);
-    });
+    const fetchPosts = async () => {
+      const response = await ApiRequest<CheapestHousesItem[]>(
+        "/popularFeaturesItems"
+      );
+      setPopularItems(response.data);
+    };
+    fetchPosts();
   }, []);
   let item = popularItems.find((property) => property.id == Number(propertyID));
 
