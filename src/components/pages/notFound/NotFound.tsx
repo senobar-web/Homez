@@ -1,6 +1,6 @@
-import Footer from "../../module/Footer/Footer";
-import TopHeader from "../../module/TopHeader/TopHeader";
-import { Link } from "react-router-dom";
+import Footer from '../../module/Footer/Footer';
+import TopHeader from '../../module/TopHeader/TopHeader';
+import {Link} from 'react-router-dom';
 
 export default function NotFound() {
   return (
@@ -14,13 +14,8 @@ export default function NotFound() {
           <div>
             <img src="/img/icon-error.png" alt="" loading="lazy" />
             <div className="text-black mb-10 mt-10">
-              <h2 className="font-bold text-4xl my-10 ">
-                متاسفانه صفحه مورد نظر شما پیدا نشد
-              </h2>
-              <p>
-                لطفا یک لینک صحیح که در وبسایت موجود باشد را جستجو کنید تا صفحه
-                مورد نظر را پیدا کنید
-              </p>
+              <h2 className="font-bold text-4xl my-10 ">متاسفانه صفحه مورد نظر شما پیدا نشد</h2>
+              <p>لطفا یک لینک صحیح که در وبسایت موجود باشد را جستجو کنید تا صفحه مورد نظر را پیدا کنید</p>
             </div>
             <Link
               to="/"
