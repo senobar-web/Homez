@@ -1,49 +1,35 @@
-import Footer from "../../module/Footer/Footer";
-import LowestHouse from "../../module/LowestHouse/LowestHouse";
-import TopHeader from "../../module/TopHeader/TopHeader";
-import { useParams } from "react-router-dom";
-import { useState, useContext } from "react";
-import { ContextItems } from "../../module/Context/ItemsContext";
-import Breadcrumb from "../../module/Breadcrumb/Breadcrumb";
-import SidebarFilter from "./sidebarFilter";
-import ListIcon from "@mui/icons-material/List";
+import Footer from '../../module/Footer/Footer';
+import LowestHouse from '../../module/LowestHouse/LowestHouse';
+import TopHeader from '../../module/TopHeader/TopHeader';
+import {useParams} from 'react-router-dom';
+import {useState, useContext} from 'react';
+import {ContextItems} from '../../module/Context/ItemsContext';
+import Breadcrumb from '../../module/Breadcrumb/Breadcrumb';
+import SidebarFilter from './sidebarFilter';
+import ListIcon from '@mui/icons-material/List';
+import type {resSliderProps} from './Sidebar.type';
 
 export default function PropertyType() {
   const [isOpen, setIsOpen] = useState(false);
-  const { allRealEstate } = useContext(ContextItems);
-  const [filters, setFilters] = useState({
+  const {allRealEstate, checkedItems} = useContext(ContextItems);
+  const [filters, setFilters] = useState<resSliderProps>({
+    onFilterChange: () => {},
     priceRange: [0, 9800],
-    selectedCity: "",
+    selectedCity: '',
     selectedRoom: null,
-    selectedOptionCheck: [],
-    selectedOption: "",
+    selectedOption: '',
   });
-  const handleFilterChange = (newFilters) => {
-    setFilters((prevFilter) => ({ ...prevFilter, ...newFilters }));
+  const handleFilterChange = (newFilters: Partial<resSliderProps>) => {
+    setFilters((prevFilter) => ({...prevFilter, ...newFilters}));
   };
-  const { propertyName } = useParams();
+  const {propertyName} = useParams();
   const filteredData = allRealEstate.filter((item) => {
-    const filterRadio =
-      filters.selectedOption === "" || item.status === filters.selectedOption;
-    const filteredItems =
-      filters.selectedOptionCheck.length === 0 ||
-      filters.selectedOptionCheck.includes(item.category);
-    const filterPrice =
-      item.price >= filters.priceRange[0] &&
-      item.price <= filters.priceRange[1];
-    const filteredCity = filters.selectedCity
-      ? item.citycenter === filters.selectedCity
-      : allRealEstate;
-    const filteredRoom = filters.selectedRoom
-      ? item.room == filters.selectedRoom
-      : allRealEstate;
-    return (
-      filterRadio &&
-      filteredItems &&
-      filterPrice &&
-      filteredCity &&
-      filteredRoom
-    );
+    const filterRadio = filters.selectedOption === '' || item.status === filters.selectedOption;
+    const filteredItems = checkedItems.length === 0 || checkedItems.includes(item.category);
+    const filterPrice = item.price >= filters.priceRange[0] && item.price <= filters.priceRange[1];
+    const filteredCity = filters.selectedCity ? item.citycenter === filters.selectedCity : allRealEstate;
+    const filteredRoom = filters.selectedRoom ? item.room == filters.selectedRoom : allRealEstate;
+    return filterRadio && filteredItems && filterPrice && filteredCity && filteredRoom;
   });
 
   return (
@@ -60,7 +46,6 @@ export default function PropertyType() {
             priceRange={filters.priceRange}
             selectedCity={filters.selectedCity}
             selectedRoom={filters.selectedRoom}
-            selectedOptionCheck={filters.selectedOptionCheck}
             selectedOption={filters.selectedOption}
           />
         </div>
@@ -76,9 +61,7 @@ export default function PropertyType() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-10 ">
               {filteredData.length > 0 ? (
-                filteredData.map((item) => (
-                  <LowestHouse key={item.id} {...item} />
-                ))
+                filteredData.map((item) => <LowestHouse key={item.id} {...item} />)
               ) : (
                 <p className="text-2xl ">ملکی پیدا نشد</p>
               )}
@@ -102,7 +85,6 @@ export default function PropertyType() {
                 priceRange={filters.priceRange}
                 selectedCity={filters.selectedCity}
                 selectedRoom={filters.selectedRoom}
-                selectedOptionCheck={filters.selectedOptionCheck}
                 selectedOption={filters.selectedOption}
               />
             </div>
