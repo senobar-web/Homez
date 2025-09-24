@@ -1,25 +1,26 @@
-import { FaStar } from "react-icons/fa";
-import { config } from "@fortawesome/fontawesome-svg-core";
+import React from 'react';
+import {FaStar} from 'react-icons/fa';
+import {config} from '@fortawesome/fontawesome-svg-core';
 config.autoAddCss = false;
-import { useEffect, useState } from "react";
-import ShowFedback from "./ShowFedback";
-import ApiRequest from "../../module/Api_url/ApiRequest";
+import {useEffect, useState} from 'react';
+import ShowFedback from './ShowFedback';
+import ApiRequest from '../../module/Api_url/ApiRequest';
 
 export default function Comments() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [viewpoint, setViewpoint] = useState("");
-  const [rating, setRating] = useState<number | null>(null);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [viewpoint, setViewpoint] = useState('');
+  const [rating, setRating] = useState<number>(0);
   const [rememberMe, setRememberMe] = useState(false);
   const [hover, setHover] = useState<number | null>(null);
   const handelSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (rememberMe) {
-      localStorage.setItem("User_name", name);
-      localStorage.setItem("User_email", email);
+      localStorage.setItem('User_name', name);
+      localStorage.setItem('User_email', email);
     } else {
-      localStorage.removeItem("User_name");
-      localStorage.removeItem("User_email");
+      localStorage.removeItem('User_name');
+      localStorage.removeItem('User_email');
     }
     const newComment = {
       name,
@@ -28,15 +29,15 @@ export default function Comments() {
       rating,
       rememberMe,
     };
-    const response = await ApiRequest("/comments", "POST", newComment);
+    const response = await ApiRequest('/comments', 'POST', newComment);
     if (response.status === 201) {
-      setViewpoint("");
-      alert(" پیام ارسال شد");
+      setViewpoint('');
+      alert(' پیام ارسال شد');
     }
   };
   useEffect(() => {
-    const savedUsername = localStorage.getItem("User_name");
-    const savedEmail = localStorage.getItem("User_email");
+    const savedUsername = localStorage.getItem('User_name');
+    const savedEmail = localStorage.getItem('User_email');
     if (savedEmail && savedUsername) {
       setName(savedUsername);
       setEmail(savedEmail);
@@ -52,11 +53,10 @@ export default function Comments() {
           <h3 className="font-bold mb-5">یک نقد و بررسی اضافه کنید</h3>
           <div className="mb-7 flex items-center ">
             <p className="ml-4"> امتیاز:</p>
-
             {[...Array(5)].map((i) => {
               const ratingValue = i + 1;
               return (
-                <label>
+                <label key={ratingValue}>
                   <input
                     type="radio"
                     name="rating"
@@ -68,9 +68,7 @@ export default function Comments() {
                     className="cursor-pointer  transition  duration-300 ease-in-out w-5 h-5"
                     onMouseEnter={() => setHover(ratingValue)}
                     onMouseLeave={() => setHover(null)}
-                    color={
-                      ratingValue <= (hover || rating) ? "#ffc107" : "#e4e5e9"
-                    }
+                    color={ratingValue <= (hover || rating) ? '#ffc107' : '#e4e5e9'}
                   />
                 </label>
               );
@@ -82,10 +80,7 @@ export default function Comments() {
                 <form className="space-y-4 " onSubmit={handelSubmit}>
                   <div className="grid grid-cols-1 sm:grid-cols-2 w-full gap-5">
                     <div>
-                      <label
-                        htmlFor="email"
-                        className="block mb-2 text-sm font-medium text-[#181A20] "
-                      >
+                      <label htmlFor="email" className="block mb-2 text-sm font-medium text-[#181A20] ">
                         نام
                       </label>
                       <input
@@ -100,10 +95,7 @@ export default function Comments() {
                       />
                     </div>
                     <div>
-                      <label
-                        htmlFor="email"
-                        className="block mb-2 text-sm font-medium text-[#181A20]"
-                      >
+                      <label htmlFor="email" className="block mb-2 text-sm font-medium text-[#181A20]">
                         ایمیل
                       </label>
                       <input
@@ -118,10 +110,7 @@ export default function Comments() {
                       />
                     </div>
                   </div>
-                  <label
-                    htmlFor="message"
-                    className="block mb-2 text-sm font-medium text-[#181A20] "
-                  >
+                  <label htmlFor="message" className="block mb-2 text-sm font-medium text-[#181A20] ">
                     نقد و بررسی
                   </label>
                   <textarea
@@ -132,20 +121,11 @@ export default function Comments() {
                   ></textarea>
                   <div className="flex items-start gap-2">
                     <div className="flex items-center h-5">
-                      <input
-                        id="terms"
-                        type="checkbox"
-                        className="w-4 h-4  "
-                        required
-                      />
+                      <input id="terms" type="checkbox" className="w-4 h-4  " required />
                     </div>
                     <div className="ml-3 text-sm">
-                      <label
-                        htmlFor="terms"
-                        className="font-light text-[#181A20] "
-                      >
-                        ذخیره نام، ایمیل و وبسایت من در مرورگر برای زمانی که
-                        دوباره دیدگاهی می‌نویسم.
+                      <label htmlFor="terms" className="font-light text-[#181A20] ">
+                        ذخیره نام، ایمیل و وبسایت من در مرورگر برای زمانی که دوباره دیدگاهی می‌نویسم.
                       </label>
                     </div>
                   </div>
