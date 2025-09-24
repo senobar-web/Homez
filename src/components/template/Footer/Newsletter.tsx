@@ -1,15 +1,15 @@
-import React from "react";
-import { useState } from "react";
-import ApiRequest from "../../module/Api_url/ApiRequest";
+import React from 'react';
+import {useState} from 'react';
+import ApiRequest from '../../module/Api_url/ApiRequest';
 export default function Newsletter() {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
   const handelSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const newEmail = { email };
-    const response = await ApiRequest("/newsletter", "POST", newEmail);
+    const newEmail = {email};
+    const response = await ApiRequest('/newsletter', 'POST', newEmail);
     if (response.status === 201) {
-      setEmail("");
-      alert("  شد ارسال");
+      setEmail('');
+      alert('  شد ارسال');
     }
   };
   return (
