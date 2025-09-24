@@ -1,4 +1,4 @@
-import { RiCopyrightLine } from "react-icons/ri";
+import {RiCopyrightLine} from 'react-icons/ri';
 
 export default function CopyRight() {
   return (
@@ -11,15 +11,15 @@ export default function CopyRight() {
         <div className=" md:absolute md:end-0 ">
           <ul className="flex gap-2">
             <li>
-              <a href="">حریم خصوصی</a>
+              <a href="javascript:void(0)">حریم خصوصی</a>
             </li>
             <span>.</span>
             <li>
-              <a href=""> قوانین و مقررات</a>
+              <a href="javascript:void(0)"> قوانین و مقررات</a>
             </li>
             <span>.</span>
             <li>
-              <a href=""> نقشه سایت</a>
+              <a href="javascript:void(0)"> نقشه سایت</a>
             </li>
           </ul>
         </div>
