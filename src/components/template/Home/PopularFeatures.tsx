@@ -1,44 +1,40 @@
-import { useState } from "react";
-import LowestHouse from "../../module/LowestHouse/LowestHouse";
-import { GoArrowUpLeft } from "react-icons/go";
-import StatusBtn from "./StatusBtn";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper/modules";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import { useEffect } from "react";
-import type { CheapestHousesItem } from "./CheapestHouses.type";
-import ApiRequest from "../../module/Api_url/ApiRequest";
+import {useState} from 'react';
+import LowestHouse from '../../module/LowestHouse/LowestHouse';
+import {GoArrowUpLeft} from 'react-icons/go';
+import StatusBtn from './StatusBtn';
+import {Swiper, SwiperSlide} from 'swiper/react';
+import {Autoplay, Navigation} from 'swiper/modules';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import {useEffect} from 'react';
+import type {CheapestHousesItem} from './CheapestHouses.type';
+import ApiRequest from '../../module/Api_url/ApiRequest';
 export default function PopularFeatures() {
   const [data, setData] = useState<CheapestHousesItem[]>([]);
-  const [statuses, setStatuses] = useState<CheapestHousesItem[]>([]);
+  // const [statuses, setStatuses] = useState<CheapestHousesItem[]>([]);
+  const [statuses, setStatuses] = useState<string[]>([]);
   const [filteredData, setFilteredData] = useState<CheapestHousesItem[]>([]);
   useEffect(() => {
     AOS.init({
       duration: 800,
-      easing: "ease-in-out",
+      easing: 'ease-in-out',
     });
   }, []);
   useEffect(() => {
     const fetchPosts = async () => {
-      const response = await ApiRequest<CheapestHousesItem[]>(
-        "/popularFeaturesItems"
-      );
+      const response = await ApiRequest<CheapestHousesItem[]>('/popular-features-items');
       const result = response.data;
       setData(result);
       setFilteredData(result);
-      const uniqueCategories: string[] = [
-        ...new Set(result.map((item) => item.status)),
-      ];
-      setStatuses(uniqueCategories as unknown as CheapestHousesItem[]);
+      const uniqueCategories: string[] = [...new Set(result.map((item) => item.status))];
+      // setStatuses(uniqueCategories as unknown as CheapestHousesItem[]);
+      setStatuses(uniqueCategories);
     };
     fetchPosts();
   }, []);
 
   const filterItem = (status: string) => {
-    let newFilteredItems = data.filter(
-      (item: CheapestHousesItem) => item.status === status
-    );
+    const newFilteredItems = data.filter((item: CheapestHousesItem) => item.status === status);
     setFilteredData(newFilteredItems);
   };
 
@@ -48,12 +44,8 @@ export default function PopularFeatures() {
         <div>
           <div className="flex flex-col md:flex-row justify-start md:items-center md:justify-between mb-10">
             <div>
-              <h3 className="text-white text-2xl font-bold">
-                ویژگی های محبوب را کشف کنید
-              </h3>
-              <p className="text-[#717171] text-sm/12">
-                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم است
-              </p>
+              <h3 className="text-white text-2xl font-bold">ویژگی های محبوب را کشف کنید</h3>
+              <p className="text-[#717171] text-sm/12">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم است</p>
             </div>
             <div className="flex items-end gap-3 ">
               <StatusBtn statuses={statuses} filterItem={filterItem} />
@@ -86,8 +78,8 @@ export default function PopularFeatures() {
             }}
           >
             {filteredData.map((item: CheapestHousesItem) => (
-              <SwiperSlide>
-                <LowestHouse key={item.id} {...item} />
+              <SwiperSlide key={item.id}>
+                <LowestHouse {...item} />
               </SwiperSlide>
             ))}
           </Swiper>
