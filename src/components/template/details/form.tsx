@@ -1,19 +1,21 @@
-import DatePicker from "react-multi-date-picker";
-import persian from "react-date-object/calendars/persian";
-import persian_fa from "react-date-object/locales/persian_fa";
-import React, { useState } from "react";
-import ApiRequest from "../../module/Api_url/ApiRequest";
+import DatePicker from 'react-multi-date-picker';
+import persian from 'react-date-object/calendars/persian';
+import persian_fa from 'react-date-object/locales/persian_fa';
+import React, {useState} from 'react';
+import ApiRequest from '../../module/Api_url/ApiRequest';
 
 export default function Form() {
   const [value, setValue] = useState(new Date());
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [selectedTime, setSelectedTime] = useState("");
-  const [message, setMessage] = useState("");
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [selectedTime, setSelectedTime] = useState('');
+  const [message, setMessage] = useState('');
   const changeHandler = (event) => {
-    const date = new Date(event);
-    setValue(date);
+    if (event) {
+      const date = new Date(event);
+      setValue(date);
+    }
   };
   const handleTimeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedTime(event.target.value);
@@ -28,19 +30,19 @@ export default function Form() {
       value,
       selectedTime,
     };
-    const response = await ApiRequest("/TourRequestForm", "POST", newData);
+    const response = await ApiRequest('/tour-request-form', 'POST', newData);
     if (response.status === 201) {
-      setEmail("");
-      setUsername("");
-      setPhone("");
-      setMessage("");
-      alert("sent request");
+      setEmail('');
+      setUsername('');
+      setPhone('');
+      setMessage('');
+      alert('sent request');
     }
   };
   const generateTimeOptions = () => {
     const options = [];
     for (let hour = 0; hour < 24; hour++) {
-      for (let minute of [0, 30]) {
+      for (const minute of [0, 30]) {
         const time = new Date();
         time.setHours(hour, minute, 0);
         options.push(time.toTimeString().slice(0, 5));
@@ -87,10 +89,10 @@ export default function Form() {
             onChange={changeHandler}
             placeholder="تاریخ"
             style={{
-              width: "100%",
-              padding: "20px 8px",
+              width: '100%',
+              padding: '20px 8px',
             }}
-            containerStyle={{ width: "100%" }}
+            containerStyle={{width: '100%'}}
           />
           <div className=" w-full mb-5 mt-5">
             <input
@@ -124,10 +126,7 @@ export default function Form() {
               onChange={(e) => setMessage(e.target.value)}
             ></textarea>
           </div>
-          <button
-            type="submit"
-            className="text-white bg-red rounded-lg text-sm w-full px-5 py-2.5 text-center "
-          >
+          <button type="submit" className="text-white bg-red rounded-lg text-sm w-full px-5 py-2.5 text-center ">
             درخواست تور را اسال کنید
           </button>
         </form>
