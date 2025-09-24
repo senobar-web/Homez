@@ -1,5 +1,5 @@
 {
-  "realEstate": [
+  "real-estate": [
     {
       "id": "1",
       "price": 9800,
@@ -157,7 +157,7 @@
       "email": "ali@gmail.com"
     }
   ],
-  "contactForm": [
+  "contact-form": [
     {
       "id": "3e38",
       "firstname": "ali",
@@ -175,7 +175,7 @@
       "rating": 2
     }
   ],
-  "TourRequestForm": [
+  "tou-request-form": [
     {
       "id": "1c94",
       "username": "reza",
@@ -197,7 +197,7 @@
     
   ],
   "login": [],
-  "popularFeaturesItems": [
+  "popular-features-items": [
     {
       "id": "1",
       "price": 9800,
@@ -287,7 +287,7 @@
       "img": "/img/p11-2.webp"
     }
   ],
-  "BlogsItems": [
+  "blogs-items": [
     {
       "id": "1",
       "title": "دسته بندی نشده",
@@ -313,7 +313,7 @@
       "img": "/img/p11.webp"
     }
   ],
-  "CheapestHousesItems": [
+  "cheapest-houses-items": [
     {
       "id": "1",
       "title": "پنت هوس ایتون ارش",
@@ -348,7 +348,7 @@
       "img": "/img/p2.webp"
     }
   ],
-  "BesthouseItems": [
+  "besthouse-items": [
     {
       "id": "1",
       "title": "خرید ملک",
@@ -390,7 +390,7 @@
       "title": "مشهد"
     }
   ],
-  "popularSearch": [
+  "popular-search": [
     {
       "id": "1",
       "title": "آپارتمان های فروشی"
@@ -408,7 +408,7 @@
       "title": "دفتر برای اجاره"
     }
   ],
-  "quickAccess": [
+  "quick-access": [
     {
       "id": "1",
       "title": "شرایط استفاده"
