@@ -1,43 +1,26 @@
-import { useContext } from "react";
-import { ContextItems } from "../../module/Context/ItemsContext";
-import Slider from "@mui/material/Slider";
-import SearchButtons from "./Searchbuttons";
-import type { resSliderProps } from "./Sidebar.type";
+import {useContext} from 'react';
+import {ContextItems} from '../../module/Context/ItemsContext';
+import Slider from '@mui/material/Slider';
+import SearchButtons from './Searchbuttons';
+import type {resSliderProps} from './Sidebar.type';
 
-export default function SidebarFilter({
-  onFilterChange,
-  priceRange,
-  selectedCity,
-  selectedRoom,
-  selectedOptionCheck,
-  selectedOption,
-}: resSliderProps) {
-  const { allRealEstate, checkedItems } = useContext(ContextItems);
+export default function SidebarFilter(sliderOption: resSliderProps) {
+  const {allRealEstate, checkedItems, toggleCheckbox} = useContext(ContextItems);
   const data = allRealEstate.map((item) => item.category);
   const filtercheckbox = [...new Set(data)];
-  const uniqueCities = [...new Set(allRealEstate.map((item) => item.citycenter)),];
+  const uniqueCities = [...new Set(allRealEstate.map((item) => item.citycenter))];
   const uniqueRooms = [...new Set(allRealEstate.map((item) => item.room))];
   const handelRoomChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    onFilterChange({ selectedRoom: event.target.value });
+    sliderOption.onFilterChange({selectedRoom: event.target.value});
   };
   const handelCityChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    onFilterChange({ selectedCity: event.target.value });
+    sliderOption.onFilterChange({selectedCity: event.target.value});
   };
-  const handelcheck = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value, checked } = event.target;
-    let newCategories = [...selectedOptionCheck];
-    if (checked) {
-      newCategories.push(value);
-    } else {
-      newCategories = newCategories.filter((item) => item !== value);
-    }
-    onFilterChange({ selectedOptionCheck: newCategories });
-  };
-  const handelPrice = (e:Event) => {
-    onFilterChange({ priceRange: e.target.value });
+  const handelPrice = (event: Event, newValue: number | number[]) => {
+    sliderOption.onFilterChange({priceRange: newValue as number[]});
   };
   const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onFilterChange({ selectedOption: e.target.value });
+    sliderOption.onFilterChange({selectedOption: e.target.value});
   };
 
   return (
@@ -51,15 +34,12 @@ export default function SidebarFilter({
               id="disabled-radio-1"
               type="radio"
               value="برای اجاره"
-              checked={selectedOption === "برای اجاره"}
+              checked={sliderOption.selectedOption === 'برای اجاره'}
               onChange={handleOptionChange}
               name="disabled-radio"
               className="w-5 h-5"
             />
-            <label
-              htmlFor="disabled-radio-1"
-              className="ms-2 text-sm font-medium "
-            >
+            <label htmlFor="disabled-radio-1" className="ms-2 text-sm font-medium ">
               برای اجاره
             </label>
           </div>
@@ -70,13 +50,10 @@ export default function SidebarFilter({
               value="برای فروش"
               name="disabled-radio"
               className="w-5 h-5 "
-              checked={selectedOption === "برای فروش"}
+              checked={sliderOption.selectedOption === 'برای فروش'}
               onChange={handleOptionChange}
             />
-            <label
-              htmlFor="disabled-radio-2"
-              className="ms-2 text-sm font-medium "
-            >
+            <label htmlFor="disabled-radio-2" className="ms-2 text-sm font-medium ">
               برای فروش
             </label>
           </div>
@@ -92,13 +69,10 @@ export default function SidebarFilter({
                 value={category}
                 name="disabled-radio"
                 className="w-4 h-4 "
-                checked={checkedItems[category]}
-                onChange={handelcheck}
+                checked={checkedItems.includes(category)}
+                onChange={() => toggleCheckbox(category)}
               />
-              <label
-                htmlFor="disabled-radio-1"
-                className="ms-2 text-sm font-medium "
-              >
+              <label htmlFor="disabled-radio-1" className="ms-2 text-sm font-medium ">
                 {category}
               </label>
             </div>
@@ -109,7 +83,7 @@ export default function SidebarFilter({
           <div>
             <h3>محدوده قیمت</h3>
             <Slider
-              value={priceRange}
+              value={sliderOption.priceRange}
               onChange={handelPrice}
               valueLabelDisplay="auto"
               min={0}
@@ -119,12 +93,12 @@ export default function SidebarFilter({
             />
             <div className="grid grid-cols-2 gap-7 mt-7">
               <span className="py-2.5 px-1.5 bg-gray-100 rounded-xl text-center ">
-                {" "}
-                تومان {priceRange[1]}
+                {' '}
+                تومان {sliderOption.priceRange[1]}
               </span>
               <span className="py-2.5 px-1.5 bg-gray-100 rounded-xl text-center ">
-                {" "}
-                تومان {priceRange[0]}
+                {' '}
+                تومان {sliderOption.priceRange[0]}
               </span>
             </div>
           </div>
@@ -136,12 +110,12 @@ export default function SidebarFilter({
             id="city"
             className="bg-gray-100 py-2.5 rounded-lg w-full"
             onChange={handelCityChange}
-            value={selectedCity}
+            value={sliderOption.selectedCity}
           >
             <option value="">انتخاب بر اساس شهر</option>
             {uniqueCities.map((citycenter) => (
               <option key={citycenter} value={citycenter}>
-                {" "}
+                {' '}
                 {citycenter}
               </option>
             ))}
@@ -153,12 +127,12 @@ export default function SidebarFilter({
           <select
             className="bg-gray-100 py-2.5 rounded-lg w-full"
             onChange={handelRoomChange}
-            value={selectedRoom}
+            value={sliderOption.selectedRoom || ''}
           >
             <option value=""> اتاق : هر </option>
             {uniqueRooms.map((room) => (
               <option key={room} value={room}>
-                {" "}
+                {' '}
                 {room}
               </option>
             ))}
