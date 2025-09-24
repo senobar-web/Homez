@@ -1,13 +1,13 @@
-import { featureItem } from "../../../../data";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import { useEffect, useState } from "react";
+import {featureItem} from '../../../../data';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import {useEffect, useState} from 'react';
 export default function CityHouses() {
-  const [options, setOptions] = useState(featureItem);
+  const [options] = useState(featureItem);
   useEffect(() => {
     AOS.init({
       duration: 800, // Animation duration
-      easing: "ease-in-out", // Animation easing
+      easing: 'ease-in-out', // Animation easing
     });
   }, []);
   return (
@@ -21,9 +21,7 @@ export default function CityHouses() {
                   <h3 className="font-bold text-3xl mb-2.5" data-aos="fade-up">
                     خانه رویایی خود را پیدا کنید!
                   </h3>
-                  <p data-aos="fade-up">
-                    لورم ایپسوم متن ساختگی با تولید نامفهوم از صنعت است
-                  </p>
+                  <p data-aos="fade-up">لورم ایپسوم متن ساختگی با تولید نامفهوم از صنعت است</p>
                 </div>
                 <div className="mb-6 font-bold space-y-6" data-aos="fade-up">
                   {options.map((item) => (
@@ -48,10 +46,7 @@ export default function CityHouses() {
               <div data-aos="zoom-in">
                 <img src="/img/h2.webp" alt="" loading="lazy" />
               </div>
-              <div
-                className="absolute -bottom-30 z-30 left-55 "
-                data-aos="zoom-in"
-              >
+              <div className="absolute -bottom-30 z-30 left-55 " data-aos="zoom-in">
                 <img src="/img/ezgif.webp" alt="" loading="lazy" />
               </div>
             </div>
