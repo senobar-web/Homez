@@ -1,5 +1,5 @@
-import  { useState, useEffect } from "react";
-import { FaArrowUp } from "react-icons/fa6";
+import {useState, useEffect} from 'react';
+import {FaArrowUp} from 'react-icons/fa6';
 
 export default function ScrollTop() {
   const [isVisible, setIsVisible] = useState(false);
@@ -13,13 +13,13 @@ export default function ScrollTop() {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   };
   useEffect(() => {
-    window.addEventListener("scroll", toggleVisiblity);
+    window.addEventListener('scroll', toggleVisiblity);
     return () => {
-      window.removeEventListener("scroll", toggleVisiblity);
+      window.removeEventListener('scroll', toggleVisiblity);
     };
   }, []);
 
