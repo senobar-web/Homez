@@ -1,6 +1,6 @@
-import "aos/dist/aos.css";
-import Logo from "./Logo";
-import MoreInfo from "./MoreInfo";
+import 'aos/dist/aos.css';
+import Logo from './Logo';
+import MoreInfo from './MoreInfo';
 
 export default function Contact() {
   return (
