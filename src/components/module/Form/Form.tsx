@@ -1,13 +1,14 @@
-import { useState, useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import ApiRequest from "../Api_url/ApiRequest";
+import React from 'react';
+import {useState, useEffect} from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import ApiRequest from '../Api_url/ApiRequest';
 
 export default function Form() {
-  const [firstname, setFirstname] = useState("");
-  const [email, setEmail] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [body, setBody] = useState("");
+  const [firstname, setFirstname] = useState('');
+  const [email, setEmail] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [body, setBody] = useState('');
   const handelSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const newPost = {
@@ -16,19 +17,19 @@ export default function Form() {
       email,
       body,
     };
-    const response = await ApiRequest("/contactForm", "POST", newPost);
+    const response = await ApiRequest('/contact-form', 'POST', newPost);
     if (response.status === 201) {
-      setFirstname("");
-      setLastName("");
-      setBody("");
-      setEmail("");
-      alert(" فرم ارسال شد");
+      setFirstname('');
+      setLastName('');
+      setBody('');
+      setEmail('');
+      alert(' فرم ارسال شد');
     }
   };
   useEffect(() => {
     AOS.init({
       duration: 800, // Animation duration
-      easing: "ease-in-out", // Animation easing
+      easing: 'ease-in-out', // Animation easing
     });
   }, []);
   return (
@@ -38,14 +39,9 @@ export default function Form() {
         className=" w-full md:w-[450px] mt-10 lg:-mt-60 border bg-white border-gray-200 px-6 py-6 rounded-xl "
         data-aos="zoom-in"
       >
-        <h3 className="text-black mb-8 font-bold">
-          سوالی دارید؟! در تماس باشید
-        </h3>
+        <h3 className="text-black mb-8 font-bold">سوالی دارید؟! در تماس باشید</h3>
         <div className="mb-5">
-          <label
-            htmlFor="username"
-            className="block mb-2 text-sm font-medium text-gray-900 "
-          >
+          <label htmlFor="username" className="block mb-2 text-sm font-medium text-gray-900 ">
             نام
           </label>
           <input
@@ -58,10 +54,7 @@ export default function Form() {
           />
         </div>
         <div className="mb-5">
-          <label
-            htmlFor="lastName"
-            className="block mb-2 text-sm font-medium text-gray-900 "
-          >
+          <label htmlFor="lastName" className="block mb-2 text-sm font-medium text-gray-900 ">
             نام خانوادگی
           </label>
           <input
@@ -74,10 +67,7 @@ export default function Form() {
           />
         </div>
         <div className="mb-5">
-          <label
-            htmlFor="email"
-            className="block mb-2 text-sm font-medium text-gray-900 "
-          >
+          <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 ">
             ایمیل
           </label>
           <input
@@ -90,10 +80,7 @@ export default function Form() {
           />
         </div>
         <div className="mb-5">
-          <label
-            htmlFor="message"
-            className="block mb-2 text-sm font-medium text-gray-900 "
-          >
+          <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 ">
             پیام
           </label>
           <textarea
