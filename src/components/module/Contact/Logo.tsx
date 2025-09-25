@@ -1,14 +1,12 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper/modules";
+import {Swiper, SwiperSlide} from 'swiper/react';
+import {Autoplay, Navigation} from 'swiper/modules';
 
 export default function Logo() {
   return (
     <>
       <div className="container">
         <div className=" py-7 md:mt-66 lg:mt-0" data-aos="fade-up">
-          <h3 className="text-gray-main text-xl text-center mb-14 font-bold">
-            مورد اعتماد در ایران
-          </h3>
+          <h3 className="text-gray-main text-xl text-center mb-14 font-bold">مورد اعتماد در ایران</h3>
           <div className="flex justify-evenly items-center">
             <Swiper
               className="mySwiper h-auto"
