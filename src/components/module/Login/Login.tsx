@@ -1,26 +1,26 @@
-import * as React from "react";
-import { useState } from "react";
-import { IoClose } from "react-icons/io5";
-import RegisterForm from "../userAccount/registerForm";
-import LoginForm from "../userAccount/LoginForm";
-import Box from "@mui/material/Box";
-import Modal from "@mui/material/Modal";
-import Tab from "@mui/material/Tab";
-import TabContext from "@mui/lab/TabContext";
-import TabList from "@mui/lab/TabList";
-import TabPanel from "@mui/lab/TabPanel";
+import * as React from 'react';
+import {useState} from 'react';
+import {IoClose} from 'react-icons/io5';
+import RegisterForm from '../userAccount/registerForm';
+import LoginForm from '../userAccount/LoginForm';
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
+import Tab from '@mui/material/Tab';
+import TabContext from '@mui/lab/TabContext';
+import TabList from '@mui/lab/TabList';
+import TabPanel from '@mui/lab/TabPanel';
 
 export default function Login() {
-  const [isShowLogin, setIsShowLogin] = useState<boolean>(true);
+  const [isShowLogin] = useState<boolean>(true);
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState("1");
+  const [value, setValue] = React.useState('1');
   const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
     width: 450,
-    bgcolor: "background.paper",
+    bgcolor: 'background.paper',
     borderRadius: 4,
   };
   const handleOpen = () => setOpen(true);
@@ -43,9 +43,7 @@ export default function Login() {
         >
           <Box sx={style}>
             <div className="flex justify-between items-center border-b-1 border-gray-100 p-5">
-              <h2 className="text-black text-2xl font-bold">
-                به هومز خوش آمدید
-              </h2>
+              <h2 className="text-black text-2xl font-bold">به هومز خوش آمدید</h2>
               <div
                 className="cursor-pointer  group w-10 h-10 rounded-full flex justify-center items-center bg-gray-100 hover:bg-[#cf2e2e] transition duration-300 ease-in-out"
                 onClick={handleClose}
@@ -54,11 +52,8 @@ export default function Login() {
               </div>
             </div>
             <TabContext value={value}>
-              <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-                <TabList
-                  onChange={handleChange}
-                  aria-label="lab API tabs example"
-                >
+              <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
+                <TabList onChange={handleChange} aria-label="lab API tabs example">
                   <Tab label="ورود" value="1" />
                   <Tab label="ایجاد حساب" value="2" />
                 </TabList>
