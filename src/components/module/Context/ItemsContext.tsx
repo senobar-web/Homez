@@ -1,40 +1,32 @@
-import React, { createContext, useEffect, useState } from "react";
-import type { CheapestHousesItem } from "../../template/Home/CheapestHouses.type";
+import React, {createContext, useEffect, useState} from 'react';
+import type {CheapestHousesItem} from '../../template/Home/CheapestHouses.type';
+import ApiRequest from '../Api_url/ApiRequest';
 
 type ContextItemsProviderProps = {
   children: React.ReactNode;
 };
 type ContextItemsTypes = {
   allRealEstate: CheapestHousesItem[];
-  toggleCheckbox: (title: string) => void;
-  checkedItems: { [key: string]: boolean };
+  toggleCheckbox: (value: string) => void;
+  checkedItems: string[];
 };
 export const ContextItems = createContext({} as ContextItemsTypes);
 
-const ContextItemsProvider = ({ children }: ContextItemsProviderProps) => {
+const ContextItemsProvider = ({children}: ContextItemsProviderProps) => {
   const [allRealEstate, setAllRealEstate] = useState<CheapestHousesItem[]>([]);
-  const [checkedItems, setCheckedItems] = useState<{ [key: string]: boolean }>(
-    {}
-  );
-  const toggleCheckbox = (title: string) => {
-    setCheckedItems((prev) => ({
-      ...prev,
-      [title]: !prev[title],
-    }));
+  const [checkedItems, setCheckedItems] = useState<string[]>([]);
+  const toggleCheckbox = (value: string) => {
+    setCheckedItems((prev) => (prev.includes(value) ? prev.filter((item) => item !== value) : [...prev, value]));
   };
   useEffect(() => {
-    fetch("http://localhost:5000/realEstate")
-      .then((res) => res.json())
-      .then((data) => {
-        setAllRealEstate(data);
-      });
+    const fetchPosts = async () => {
+      const response = await ApiRequest<CheapestHousesItem[]>('/real-estate');
+      setAllRealEstate(response.data);
+    };
+    fetchPosts();
   }, []);
   return (
-    <ContextItems.Provider
-      value={{ allRealEstate, toggleCheckbox, checkedItems }}
-    >
-      {children}
-    </ContextItems.Provider>
+    <ContextItems.Provider value={{allRealEstate, toggleCheckbox, checkedItems}}>{children}</ContextItems.Provider>
   );
 };
 

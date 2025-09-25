@@ -1,18 +1,20 @@
-import Title from "../../module/Title/Title";
-import LowestHouse from "../../module/LowestHouse/LowestHouse";
-import { titlesItem } from "../../../../data";
-import type { CheapestHousesItem } from "./CheapestHouses.type";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper/modules";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import Title from '../../module/Title/Title';
+import LowestHouse from '../../module/LowestHouse/LowestHouse';
+import {titlesItem} from '../../../../data';
+import type {CheapestHousesItem} from './CheapestHouses.type';
+import {Swiper, SwiperSlide} from 'swiper/react';
+import {Autoplay, Navigation} from 'swiper/modules';
+import {useEffect, useState} from 'react';
+import ApiRequest from '../../module/Api_url/ApiRequest';
 
 export default function CheapestHouses() {
   const [cheapestItems, setCheapestItems] = useState<CheapestHousesItem[]>([]);
   useEffect(() => {
-    axios.get("http://localhost:5000/CheapestHousesItems").then((res) => {
-      setCheapestItems(res.data);
-    });
+    const fetchPosts = async () => {
+      const response = await ApiRequest<CheapestHousesItem[]>('/cheapest-houses-items');
+      setCheapestItems(response.data);
+    };
+    fetchPosts();
   }, []);
   return (
     <>
@@ -47,8 +49,8 @@ export default function CheapestHouses() {
               }}
             >
               {cheapestItems.map((item) => (
-                <SwiperSlide>
-                  <LowestHouse key={item.id} {...item} />
+                <SwiperSlide key={item.id}>
+                  <LowestHouse {...item} />
                 </SwiperSlide>
               ))}
             </Swiper>

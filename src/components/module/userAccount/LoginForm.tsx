@@ -1,28 +1,25 @@
-import { useForm } from "react-hook-form";
-import NorthWestIcon from "@mui/icons-material/NorthWest";
-import { useState } from "react";
-import type { loginInput } from "./LoginInput.type";
+import {useForm} from 'react-hook-form';
+import NorthWestIcon from '@mui/icons-material/NorthWest';
+import {useState} from 'react';
+import type {loginInput} from './LoginInput.type';
 
 export default function LoginForm() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const {
     register,
-    formState: { errors },
+    formState: {errors},
   } = useForm<loginInput>();
   return (
     <>
       <form className="w-full mx-auto p-5">
         <div className="mb-5">
-          <label
-            htmlFor="email"
-            className="block mb-2 text-sm font-medium text-black "
-          >
+          <label htmlFor="email" className="block mb-2 text-sm font-medium text-black ">
             نام کاربری یا آدرس ایمیل
           </label>
           <input
             type="text"
-            {...register("username", { required: "نام کاربری را وارد نمایید" })}
+            {...register('username', {required: 'نام کاربری را وارد نمایید'})}
             id="email"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -31,19 +28,16 @@ export default function LoginForm() {
           {errors.username && <span>{errors.username.message}</span>}
         </div>
         <div className="mb-5">
-          <label
-            htmlFor="password"
-            className="block mb-2 text-sm font-medium text-black "
-          >
+          <label htmlFor="password" className="block mb-2 text-sm font-medium text-black ">
             رمز عبور
           </label>
           <input
             type="password"
-            {...register("password", {
-              required: "رمز عبور  را وارد نمایید",
+            {...register('password', {
+              required: 'رمز عبور  را وارد نمایید',
               minLength: {
                 value: 6,
-                message: "رمز  عبور حداقل باید ۶ کاراکتر داشته باشد",
+                message: 'رمز  عبور حداقل باید ۶ کاراکتر داشته باشد',
               },
             })}
             id="password"
@@ -64,10 +58,7 @@ export default function LoginForm() {
                 required
               />
             </div>
-            <label
-              htmlFor="remember"
-              className="ms-2 text-sm font-medium text-black "
-            >
+            <label htmlFor="remember" className="ms-2 text-sm font-medium text-black ">
               مرا در سیستم نگه دارید
             </label>
           </div>

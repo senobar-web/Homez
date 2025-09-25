@@ -1,35 +1,35 @@
-import { TbPointFilled } from "react-icons/tb";
-import { MdOutlineWatchLater, MdOutlineBed } from "react-icons/md";
-import { FaShower } from "react-icons/fa6";
-import { GiResize } from "react-icons/gi";
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import type { CheapestHousesItem } from "../Home/CheapestHouses.type";
-import { shapeIcon } from "../../../../data";
+import {TbPointFilled} from 'react-icons/tb';
+import {MdOutlineWatchLater, MdOutlineBed} from 'react-icons/md';
+import {FaShower} from 'react-icons/fa6';
+import {GiResize} from 'react-icons/gi';
+import {useParams} from 'react-router-dom';
+import {useEffect, useState} from 'react';
+import type {CheapestHousesItem} from '../Home/CheapestHouses.type';
+import {shapeIcon} from '../../../../data';
+import ApiRequest from '../../module/Api_url/ApiRequest';
 
 export default function Property() {
-  const [icon, setIcon] = useState(shapeIcon);
-  const { propertyID } = useParams();
+  const [icon] = useState(shapeIcon);
+  const {propertyID} = useParams();
   const [popularItems, setPopularItems] = useState<CheapestHousesItem[]>([]);
   useEffect(() => {
-    axios.get("http://localhost:5000/popularFeaturesItems").then((res) => {
-      setPopularItems(res.data);
-    });
+    const fetchPosts = async () => {
+      const response = await ApiRequest<CheapestHousesItem[]>('/popular-features-items');
+      setPopularItems(response.data);
+    };
+    fetchPosts();
   }, []);
-  let item = popularItems.find((property) => property.id == Number(propertyID));
+  const item = popularItems.find((property) => property.id == Number(propertyID));
 
   return (
     <>
       <div className="flex flex-col md:flex-row  md:items-center justify-between">
         <div>
-          <h1 className="font-bold text-2xl md:text-3xl lg:text-5xl mb-6">
-            {item?.title}{" "}
-          </h1>
+          <h1 className="font-bold text-2xl md:text-3xl lg:text-5xl mb-6">{item?.title} </h1>
           <div className="flex items-center space-x-0 md:space-x-3 text-sm">
             <p> {item?.city}</p>
             <div className="text-red font-bold flex items-center ">
-              {" "}
+              {' '}
               <TbPointFilled /> {item?.status}
             </div>
             <div className="flex items-center space-x-2">
@@ -63,32 +63,23 @@ export default function Property() {
               </div>
             ))}
           </div>
-          <p className="md:text-center font-bold text-2xl">
-            {item?.price.toLocaleString()} تومان
-          </p>
+          <p className="md:text-center font-bold text-2xl">{item?.price.toLocaleString()} تومان</p>
         </div>
       </div>
       <div className="grid grid-cols-1 gap-y-5 sm:grid-cols-2 gap-x-5 my-8">
         <div className="rounded-t-2xl sm:rounded-r-2xl sm:rounded-tl-none overflow-hidden ">
-          <img
-            src={item?.img}
-            alt=""
-            className="w-full h-full  hover:scale-105 hover:cursor-pointer"
-          />
+          <img src={item?.img} alt="" className="w-full h-full  hover:scale-105 hover:cursor-pointer" loading="lazy" />
         </div>
         <div className="grid grid-cols-2 gap-5 rounded-b-2xl sm:rounded-l-2xl sm:rounded-br-none overflow-hidden  ">
           <div className="overflow-hidden">
-            <img
-              src="/img/p6.webp"
-              alt=""
-              className="w-full h-full hover:scale-105 hover:cursor-pointer "
-            />
+            <img src="/img/p6.webp" alt="" className="w-full h-full hover:scale-105 hover:cursor-pointer " />
           </div>
           <div className="overflow-hidden">
             <img
               src="/img/p6.webp"
               alt=""
               className="w-full h-full hover:scale-105 hover:cursor-pointer "
+              loading="lazy"
             />
           </div>
           <div className="overflow-hidden">
@@ -96,6 +87,7 @@ export default function Property() {
               src="/img/p6.webp"
               alt=""
               className="w-full h-full hover:scale-105 hover:cursor-pointer"
+              loading="lazy"
             />
           </div>
           <div className="overflow-hidden">
@@ -103,6 +95,7 @@ export default function Property() {
               src="/img/p11.jpg"
               alt=""
               className="w-full h-full hover:scale-105 hover:cursor-pointer "
+              loading="lazy"
             />
           </div>
         </div>
