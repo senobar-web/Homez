@@ -1,9 +1,9 @@
-import Application from "../../template/Footer/Application";
-import CopyRight from "../../template/Footer/CopyRight";
-import Newsletter from "../../template/Footer/Newsletter";
-import City from "../../template/Footer/City";
-import Access from "../../template/Footer/Access";
-import PopularSearch from "../../template/Footer/PopularSearch";
+import Application from '../../template/Footer/Application';
+import CopyRight from '../../template/Footer/CopyRight';
+import Newsletter from '../../template/Footer/Newsletter';
+import City from '../../template/Footer/City';
+import Access from '../../template/Footer/Access';
+import PopularSearch from '../../template/Footer/PopularSearch';
 
 export default function Footer() {
   return (
