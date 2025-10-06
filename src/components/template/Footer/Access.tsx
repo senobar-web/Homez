@@ -1,13 +1,14 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import type { OptionsFooter } from "./option.type";
-
+import {useState, useEffect} from 'react';
+import type {OptionsFooter} from './option.type';
+import ApiRequest from '../../module/Api_url/ApiRequest';
 export default function Access() {
-  const [access, setAccess] = useState([]);
+  const [access, setAccess] = useState<OptionsFooter[]>([]);
   useEffect(() => {
-    axios.get("http://localhost:5000/quickAccess").then((res) => {
-      setAccess(res.data);
-    });
+    const fetchPosts = async () => {
+      const response = await ApiRequest<OptionsFooter[]>('/quick-access');
+      setAccess(response.data);
+    };
+    fetchPosts();
   }, []);
   return (
     <div>

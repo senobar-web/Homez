@@ -1,13 +1,14 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import type { OptionsFooter } from "./option.type";
-
+import {useState, useEffect} from 'react';
+import type {OptionsFooter} from './option.type';
+import ApiRequest from '../../module/Api_url/ApiRequest';
 export default function City() {
-  const [cityFooter, setCityFooter] = useState([]);
+  const [cityFooter, setCityFooter] = useState<OptionsFooter[]>([]);
   useEffect(() => {
-    axios.get("http://localhost:5000/city").then((res) => {
-      setCityFooter(res.data);
-    });
+    const fetchPosts = async () => {
+      const response = await ApiRequest<OptionsFooter[]>('/city');
+      setCityFooter(response.data);
+    };
+    fetchPosts();
   }, []);
   return (
     <>

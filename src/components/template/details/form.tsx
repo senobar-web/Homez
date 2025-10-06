@@ -1,46 +1,51 @@
-import DatePicker from "react-multi-date-picker";
-import persian from "react-date-object/calendars/persian";
-import persian_fa from "react-date-object/locales/persian_fa";
-import React, { useState } from "react";
-import axios from "axios";
+import DatePicker from 'react-multi-date-picker';
+import persian from 'react-date-object/calendars/persian';
+import persian_fa from 'react-date-object/locales/persian_fa';
+import React, {useState} from 'react';
+import ApiRequest from '../../module/Api_url/ApiRequest';
+
 export default function Form() {
   const [value, setValue] = useState(new Date());
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [selectedTime, setSelectedTime] = useState("");
-  const [message, setMessage] = useState("");
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [selectedTime, setSelectedTime] = useState('');
+  const [message, setMessage] = useState('');
   const changeHandler = (event) => {
-    const date = new Date(event);
-    setValue(date);
+    if (event) {
+      const date = new Date(event);
+      setValue(date);
+    }
   };
   const handleTimeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedTime(event.target.value);
   };
-
   const handelSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const res = await axios({
-      method: "post",
-      url: "http://localhost:5000/TourRequestForm",
-      data: { username, email, phone, message, value, selectedTime },
-      headers: { "Content-Type": "application/json" },
-    });
-    if (res.status === 201) {
-      setEmail("");
-      setUsername("");
-      setPhone("");
-      setMessage("");
-      alert("sent request");
+    const newData = {
+      username,
+      email,
+      phone,
+      message,
+      value,
+      selectedTime,
+    };
+    const response = await ApiRequest('/tour-request-form', 'POST', newData);
+    if (response.status === 201) {
+      setEmail('');
+      setUsername('');
+      setPhone('');
+      setMessage('');
+      alert('sent request');
     }
   };
   const generateTimeOptions = () => {
     const options = [];
     for (let hour = 0; hour < 24; hour++) {
-      for (let minute of [0, 30]) {
+      for (const minute of [0, 30]) {
         const time = new Date();
         time.setHours(hour, minute, 0);
-        options.push(time.toTimeString().slice(0, 5)); 
+        options.push(time.toTimeString().slice(0, 5));
       }
     }
     return options;
@@ -82,12 +87,12 @@ export default function Form() {
             calendarPosition="bottom-right"
             value={value}
             onChange={changeHandler}
-             placeholder="تاریخ" 
+            placeholder="تاریخ"
             style={{
-              width:"100%",
-              padding:"20px 8px",
+              width: '100%',
+              padding: '20px 8px',
             }}
-            containerStyle={{width:"100%"}}
+            containerStyle={{width: '100%'}}
           />
           <div className=" w-full mb-5 mt-5">
             <input
@@ -104,7 +109,6 @@ export default function Form() {
           <div className="w-full mb-5 ">
             <input
               type="tel"
-              // pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
               id="floating_phone"
               placeholder="تلفن"
               className="block py-2.5 px-2 rounded-sm focus:outline-0 w-full text-sm text-gray-900 bg-transparent border-1 border-gray-300"
@@ -122,10 +126,7 @@ export default function Form() {
               onChange={(e) => setMessage(e.target.value)}
             ></textarea>
           </div>
-          <button
-            type="submit"
-            className="text-white bg-red rounded-lg text-sm w-full px-5 py-2.5 text-center "
-          >
+          <button type="submit" className="text-white bg-red rounded-lg text-sm w-full px-5 py-2.5 text-center ">
             درخواست تور را اسال کنید
           </button>
         </form>

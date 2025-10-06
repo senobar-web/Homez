@@ -1,8 +1,7 @@
- export type resSliderProps = {
-  onFilterChange:(newFilters: any) => void ,
+export type resSliderProps = {
+  onFilterChange: (newFilters: Partial<resSliderProps>) => void;
   priceRange: number[];
   selectedCity: string;
-  selectedRoom: null;
-  selectedOptionCheck: string[];
+  selectedRoom: number | string | null;
   selectedOption: string;
 };

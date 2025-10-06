@@ -1,4 +1,4 @@
-import Socialmedia from "../../module/SocialMedia/Socialmedia";
+import Socialmedia from '../../module/SocialMedia/Socialmedia';
 
 export default function Application() {
   return (
@@ -37,9 +37,7 @@ export default function Application() {
             </svg>
             <div className="text-left rtl:text-right">
               <div className="mb-1 text-xs"> دریافت از </div>
-              <div className="-mt-1 font-sans text-sm font-semibold">
-                اپل استور
-              </div>
+              <div className="-mt-1 font-sans text-sm font-semibold">اپل استور</div>
             </div>
           </a>
           <a
@@ -63,16 +61,16 @@ export default function Application() {
             </svg>
             <div className="text-left rtl:text-right">
               <div className="mb-1 text-xs"> دریافت از</div>
-              <div className="-mt-1 font-sans text-sm font-semibold">
-                گوگل پلی
-              </div>
+              <div className="-mt-1 font-sans text-sm font-semibold">گوگل پلی</div>
             </div>
           </a>
         </div>
       </div>
       <div className="mt-9">
         <h3>ما را در شبکه های اجتماعی دنبال کنید</h3>
-        <div className="flex pr-16 mt-4 "><Socialmedia/></div>
+        <div className="flex pr-16 mt-4 ">
+          <Socialmedia />
+        </div>
       </div>
     </div>
   );

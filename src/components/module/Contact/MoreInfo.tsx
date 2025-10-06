@@ -1,15 +1,15 @@
-import { Link } from "react-router-dom";
-import { GoArrowUpRight } from "react-icons/go";
-import { FiPhone } from "react-icons/fi";
-import { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import {Link} from 'react-router-dom';
+import {GoArrowUpRight} from 'react-icons/go';
+import {FiPhone} from 'react-icons/fi';
+import {useEffect} from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default function MoreInfo() {
   useEffect(() => {
     AOS.init({
       duration: 1000, // Animation duration
-      easing: "ease-in-out", // Animation easing
+      easing: 'ease-in-out', // Animation easing
     });
   }, []);
   return (
@@ -18,12 +18,8 @@ export default function MoreInfo() {
         <div className="container ">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between  ">
             <div data-aos="fade-up">
-              <h3 className="text-[#181A20] text-lg lg:text-2xl font-bold">
-                برای اطلاعات بیشتر باما تماس بگیرید
-              </h3>
-              <p className="text-[#717171] text-sm">
-                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم است
-              </p>
+              <h3 className="text-[#181A20] text-lg lg:text-2xl font-bold">برای اطلاعات بیشتر باما تماس بگیرید</h3>
+              <p className="text-[#717171] text-sm">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم است</p>
             </div>
             <div className="flex flex-col md:flex-row  md:items-end gap-5 lg:h-[66px] mt-5 ">
               <Link

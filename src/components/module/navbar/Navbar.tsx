@@ -1,6 +1,6 @@
-import type { JSX } from "react";
-import { IoMdArrowDropdown } from "react-icons/io";
-import { Link } from "react-router-dom";
+import type {JSX} from 'react';
+import {IoMdArrowDropdown} from 'react-icons/io';
+import {Link} from 'react-router-dom';
 
 export default function Navbar(): JSX.Element {
   return (
@@ -24,17 +24,28 @@ export default function Navbar(): JSX.Element {
           <h3 className="text-white text-sm font-bold "> صفحات</h3>
           <IoMdArrowDropdown className="w-5 h-5" />
           <ul className="opacity-0 invisible bg-white group-hover:opacity-100 group-hover:visible rounded-xl text-black w-[250px] absolute overflow-hidden top-12 shadow-2xl z-[9999] transition-all  ">
-            <li className="hover:bg-red-50 px-4 py-2 text-gray-700">
-              <Link to="/contact">تماس با ما</Link>
+            <li className="hover:bg-red-50  text-gray-700">
+              <Link to="/contact" className="w-full block h-full px-4 py-2">
+                تماس با ما
+              </Link>
             </li>
-            <li className="hover:bg-red-50 px-4 py-2 text-gray-700">
-              <Link to="/about"> درباره ما</Link>
+            <li className="hover:bg-red-50 text-gray-700">
+              <Link to="/about" className="w-full block h-full px-4 py-2">
+                {' '}
+                درباره ما
+              </Link>
             </li>
-            <li className="hover:bg-red-50 px-4 py-2 text-gray-700">
-              <Link to="/non-existent-path"> 404</Link>
+            <li className="hover:bg-red-50 text-gray-700">
+              <Link to="/non-existent-path" className="w-full block h-full px-4 py-2">
+                {' '}
+                404
+              </Link>
             </li>
-            <li className="hover:bg-red-50 px-4 py-2  text-gray-700">
-              <Link to="/login"> ورود / ثبت نام</Link>
+            <li className="hover:bg-red-50  text-gray-700">
+              <Link to="/login" className="w-full block h-full px-4 py-2">
+                {' '}
+                ورود / ثبت نام
+              </Link>
             </li>
           </ul>
         </div>
