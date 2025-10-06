@@ -1,16 +1,14 @@
-import React, { useContext, useState } from "react";
-import { ContextItems } from "../Context/ItemsContext";
+import React, {useContext, useState} from 'react';
+import {ContextItems} from '../Context/ItemsContext';
 
 export default function Searchresult() {
   const contextData = useContext(ContextItems);
-  const [searchValue, setSearchValue] = useState(" ");
+  const [searchValue, setSearchValue] = useState(' ');
   const [filterData, setFilterData] = useState(contextData.allRealEstate);
   const handelInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
     const filterEstate = contextData.allRealEstate.filter((item) => {
-      item.title.includes(searchValue) ||
-        item.city.includes(searchValue) ||
-        item.category.includes(searchValue);
+      item.title.includes(searchValue) || item.city.includes(searchValue) || item.category.includes(searchValue);
     });
     setFilterData(filterEstate);
   };
@@ -35,9 +33,7 @@ export default function Searchresult() {
                       <img src={item.img} alt="image" className="size-20" />
                       <div className="flex justify-between w-full ">
                         <div className="flex flex-col">
-                          <h2 className=" text-black hover:underline text-[14px] cursor-pointer">
-                            {item.title}
-                          </h2>
+                          <h2 className=" text-black hover:underline text-[14px] cursor-pointer">{item.title}</h2>
                           <p className="text-black   ">{item.price} تومان </p>
                           <div className="flex gap-3.5 text-gray-400 text-[13px]">
                             <p>{item.room} اتاق خواب</p>
@@ -53,9 +49,7 @@ export default function Searchresult() {
             </>
           ) : (
             <li className="p-5 ">
-              <span className="font-IRANSans-Light text-lg text-gray-700 ">
-                محصولی یافت نشد
-              </span>
+              <span className="font-IRANSans-Light text-lg text-gray-700 ">محصولی یافت نشد</span>
             </li>
           )}
         </ul>
