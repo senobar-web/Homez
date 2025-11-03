@@ -1,4 +1,3 @@
-import 'aos/dist/aos.css';
 import Logo from './Logo';
 import MoreInfo from './MoreInfo';
 
