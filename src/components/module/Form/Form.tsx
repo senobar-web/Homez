@@ -1,14 +1,26 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 import ApiRequest from '../Api_url/ApiRequest';
+import {useMutation} from '@tanstack/react-query';
+import AOSInit from '../aos/aos';
 
+interface ContactData {
+  firstname: string;
+  email: string;
+  lastName: string;
+  body: string;
+}
 export default function Form() {
   const [firstname, setFirstname] = useState('');
   const [email, setEmail] = useState('');
   const [lastName, setLastName] = useState('');
   const [body, setBody] = useState('');
+  const mutation = useMutation({
+    mutationFn: async (data: ContactData) => {
+      const response = await ApiRequest('/contact-form', 'POST', data);
+      return response;
+    },
+  });
   const handelSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const newPost = {
@@ -17,23 +29,23 @@ export default function Form() {
       email,
       body,
     };
-    const response = await ApiRequest('/contact-form', 'POST', newPost);
-    if (response.status === 201) {
+    mutation.mutate(newPost);
+  };
+  useEffect(() => {
+    if (mutation.isSuccess) {
+      alert('درخواست ارسال شد');
       setFirstname('');
       setLastName('');
       setBody('');
       setEmail('');
-      alert(' فرم ارسال شد');
     }
-  };
-  useEffect(() => {
-    AOS.init({
-      duration: 800, // Animation duration
-      easing: 'ease-in-out', // Animation easing
-    });
-  }, []);
+    if (mutation.isError) {
+      alert('Error sending: ' + (mutation.error as Error).message);
+    }
+  }, [mutation.isSuccess, mutation.isError]);
   return (
     <>
+      <AOSInit />
       <form
         onSubmit={handelSubmit}
         className=" w-full md:w-[450px] mt-10 lg:-mt-60 border bg-white border-gray-200 px-6 py-6 rounded-xl "

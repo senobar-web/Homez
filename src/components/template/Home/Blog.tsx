@@ -2,27 +2,18 @@ import BlogItem from '../../module/Blog/BlogItem';
 import type {Blogs} from '../../module/Blog/Blog.type';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Autoplay, Navigation} from 'swiper/modules';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import {useEffect, useState} from 'react';
+import {useQuery} from '@tanstack/react-query';
 import ApiRequest from '../../module/Api_url/ApiRequest';
+import AOSInit from '../../module/aos/aos';
 export default function Blog() {
-  const [blogsItems, setBlogsItems] = useState<Blogs[]>([]);
-  useEffect(() => {
-    AOS.init({
-      duration: 1000, // Animation duration
-      easing: 'ease-in-out', // Animation easing
-    });
-  }, []);
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const response = await ApiRequest<Blogs[]>('/blogs-items');
-      setBlogsItems(response.data);
-    };
-    fetchPosts();
-  }, []);
+  const {data: response} = useQuery({
+    queryKey: ['blogs-items'],
+    queryFn: () => ApiRequest<Blogs[]>('/blogs-items'),
+  });
+  const blogsItems = response?.data;
   return (
     <>
+      <AOSInit />
       <section className="my-9 py-14 ">
         <div className="container">
           <div className="text-center" data-aos="fade-up">
@@ -54,7 +45,7 @@ export default function Blog() {
                 },
               }}
             >
-              {blogsItems.map((item) => (
+              {blogsItems?.map((item) => (
                 <SwiperSlide key={item.id}>
                   <BlogItem {...item} />
                 </SwiperSlide>
