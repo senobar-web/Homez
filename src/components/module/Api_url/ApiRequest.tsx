@@ -3,6 +3,7 @@ import type {AxiosRequestConfig, AxiosResponse} from 'axios';
 export interface ApiResponse<T> {
   data: T;
   status: number;
+  message?: string;
 }
 const ApiRequest = async <T,>(
   endpoint: string,
@@ -24,9 +25,12 @@ const ApiRequest = async <T,>(
 
   try {
     const response: AxiosResponse<T> = await axios(options);
-    return response;
+    return {
+      data: response.data,
+      status: response.status,
+    };
   } catch (error) {
-    console.error('درخواست Api ناموفق بود:', error);
+    console.error('درخواست api ناموفق بود :', error);
     throw error;
   }
 };
