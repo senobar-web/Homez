@@ -1,17 +1,11 @@
 import {featureItem} from '../../../../data';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
+import AOSInit from '../../module/aos/aos';
 export default function CityHouses() {
   const [options] = useState(featureItem);
-  useEffect(() => {
-    AOS.init({
-      duration: 800, // Animation duration
-      easing: 'ease-in-out', // Animation easing
-    });
-  }, []);
   return (
     <>
+      <AOSInit />
       <section className="mb-30">
         <div className="container">
           <div className="text-black grid grid-cols-1 lg:grid-cols-2">

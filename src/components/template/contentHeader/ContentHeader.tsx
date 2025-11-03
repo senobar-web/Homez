@@ -1,19 +1,11 @@
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import {useEffect} from 'react';
+import AOSInit from '../../module/aos/aos';
 import SearchBox from '../../module/searchBox/SearchBox';
 import React from 'react';
 
 const ContentHeader: React.FC = () => {
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      easing: 'ease-in-out',
-    });
-  }, []);
-
   return (
     <>
+      <AOSInit />
       <div className="flex flex-col justify-center items-center mx-auto text-center py-24 lg:py-56 ">
         <div className="bg-transparent py-4.5 px-3.5">
           <div className="text-white font-bold ">
