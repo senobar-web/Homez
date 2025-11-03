@@ -1,27 +1,18 @@
 import Besthomes from '../../module/BestHomes/Besthomes';
 import type {BestHouse} from '../../module/BestHomes/Besthouse.types';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import {useEffect, useState} from 'react';
 import ApiRequest from '../../module/Api_url/ApiRequest';
+import {useQuery} from '@tanstack/react-query';
+import AOSInit from '../../module/aos/aos';
 
 export default function BestHouses() {
-  const [items, setItems] = useState<BestHouse[]>([]);
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const response = await ApiRequest<BestHouse[]>('/besthouse-items');
-      setItems(response.data);
-    };
-    fetchPosts();
-  }, []);
-  useEffect(() => {
-    AOS.init({
-      duration: 800, // Animation duration
-      easing: 'ease-in-out', // Animation easing
-    });
-  }, []);
+  const {data: response} = useQuery({
+    queryKey: ['besthouse'],
+    queryFn: () => ApiRequest<BestHouse[]>('/besthouse-items'),
+  });
+  const items = response?.data;
   return (
     <>
+      <AOSInit />
       <section>
         <div className="container">
           <div className="my-14  text-center" data-aos="fade-up">
@@ -29,7 +20,7 @@ export default function BestHouses() {
             <p className="text-[#717171] text-sm mt-2.5"> لورم ایپسوم متن ساختگی با تولید سادگی طراحان گرافیک است</p>
           </div>
           <div className="flex flex-col md:flex-row justify-between ">
-            {items.map((item) => (
+            {items?.map((item) => (
               <Besthomes key={item.id} {...item} />
             ))}
           </div>

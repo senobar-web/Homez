@@ -1,19 +1,12 @@
 import {Link} from 'react-router-dom';
 import {GoArrowUpRight} from 'react-icons/go';
 import type {BestHouse} from './Besthouse.types';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import {useEffect} from 'react';
+import AOSInit from '../aos/aos';
 
 export default function Besthomes(houseElements: BestHouse) {
-  useEffect(() => {
-    AOS.init({
-      duration: 800,
-      easing: 'ease-in-out',
-    });
-  }, []);
   return (
     <>
+      <AOSInit />
       <div className="py-9 shadow-lg rounded-lg w-full md:w-[30%]" data-aos="fade-up">
         <div className="flex flex-col items-center gap-y-3.5 px-8">
           <div>

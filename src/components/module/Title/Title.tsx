@@ -1,17 +1,10 @@
 import NorthWestIcon from '@mui/icons-material/NorthWest';
 import type {Titles as TitleType} from './Titles.types';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import {useEffect} from 'react';
+import AOSInit from '../aos/aos';
 export default function Title(titleItem: TitleType) {
-  useEffect(() => {
-    AOS.init({
-      duration: 800,
-      easing: 'ease-in-out',
-    });
-  }, []);
   return (
     <>
+      <AOSInit />
       <div className="flex flex-col items-start justify-start md:flex-row  md:justify-between" data-aos="fade-up">
         <div>
           <h3 className="text-[#181A20] text-2xl font-bold">{titleItem.title}</h3>

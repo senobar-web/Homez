@@ -1,19 +1,11 @@
 import {Link} from 'react-router-dom';
 import {GoArrowUpRight} from 'react-icons/go';
 import {FiPhone} from 'react-icons/fi';
-import {useEffect} from 'react';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-
+import AOSInit from '../aos/aos';
 export default function MoreInfo() {
-  useEffect(() => {
-    AOS.init({
-      duration: 1000, // Animation duration
-      easing: 'ease-in-out', // Animation easing
-    });
-  }, []);
   return (
     <>
+      <AOSInit />
       <div className="bg-gray-100 mt-8 rounded-none lg:rounded-xl lg:mx-14  ">
         <div className="container ">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between  ">

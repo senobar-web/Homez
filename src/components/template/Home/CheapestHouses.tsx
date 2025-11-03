@@ -4,18 +4,15 @@ import {titlesItem} from '../../../../data';
 import type {CheapestHousesItem} from './CheapestHouses.type';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Autoplay, Navigation} from 'swiper/modules';
-import {useEffect, useState} from 'react';
 import ApiRequest from '../../module/Api_url/ApiRequest';
+import {useQuery} from '@tanstack/react-query';
 
 export default function CheapestHouses() {
-  const [cheapestItems, setCheapestItems] = useState<CheapestHousesItem[]>([]);
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const response = await ApiRequest<CheapestHousesItem[]>('/cheapest-houses-items');
-      setCheapestItems(response.data);
-    };
-    fetchPosts();
-  }, []);
+  const {data: response} = useQuery({
+    queryKey: ['cheapest-houses'],
+    queryFn: () => ApiRequest<CheapestHousesItem[]>('/cheapest-houses-items'),
+  });
+  const cheapestItems = response?.data;
   return (
     <>
       <section className="bg-gray-100 my-9 py-14">
@@ -48,7 +45,7 @@ export default function CheapestHouses() {
                 },
               }}
             >
-              {cheapestItems.map((item) => (
+              {cheapestItems?.map((item) => (
                 <SwiperSlide key={item.id}>
                   <LowestHouse {...item} />
                 </SwiperSlide>

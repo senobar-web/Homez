@@ -10,6 +10,7 @@ Real estate platform for listing and exploring properties efficiently.
 - React Router
 - TypeScript
 - Axios (for API calls)
+- React Query
 - Vite.js
 - Tailwind CSS
 - JSON Server

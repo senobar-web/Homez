@@ -5,7 +5,15 @@ config.autoAddCss = false;
 import {useEffect, useState} from 'react';
 import ShowFedback from './ShowFedback';
 import ApiRequest from '../../module/Api_url/ApiRequest';
+import {useMutation} from '@tanstack/react-query';
 
+interface newComment {
+  name: string;
+  email: string;
+  viewpoint: string;
+  rating: number;
+  rememberMe: boolean;
+}
 export default function Comments() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -13,15 +21,14 @@ export default function Comments() {
   const [rating, setRating] = useState<number>(0);
   const [rememberMe, setRememberMe] = useState(false);
   const [hover, setHover] = useState<number | null>(null);
+  const mutation = useMutation({
+    mutationFn: (data: newComment) => {
+      const response = ApiRequest('/comments', 'POST', data);
+      return response;
+    },
+  });
   const handelSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (rememberMe) {
-      localStorage.setItem('User_name', name);
-      localStorage.setItem('User_email', email);
-    } else {
-      localStorage.removeItem('User_name');
-      localStorage.removeItem('User_email');
-    }
     const newComment = {
       name,
       email,
@@ -29,12 +36,24 @@ export default function Comments() {
       rating,
       rememberMe,
     };
-    const response = await ApiRequest('/comments', 'POST', newComment);
-    if (response.status === 201) {
+    mutation.mutate(newComment);
+    if (rememberMe) {
+      localStorage.setItem('User_name', name);
+      localStorage.setItem('User_email', email);
+    } else {
+      localStorage.removeItem('User_name');
+      localStorage.removeItem('User_email');
+    }
+  };
+  useEffect(() => {
+    if (mutation.isSuccess) {
       setViewpoint('');
       alert(' پیام ارسال شد');
     }
-  };
+    if (mutation.isError) {
+      alert('Error sending: ' + (mutation.error as Error).message);
+    }
+  }, [mutation.isSuccess, mutation.isError]);
   useEffect(() => {
     const savedUsername = localStorage.getItem('User_name');
     const savedEmail = localStorage.getItem('User_email');

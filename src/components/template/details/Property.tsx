@@ -3,23 +3,21 @@ import {MdOutlineWatchLater, MdOutlineBed} from 'react-icons/md';
 import {FaShower} from 'react-icons/fa6';
 import {GiResize} from 'react-icons/gi';
 import {useParams} from 'react-router-dom';
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import type {CheapestHousesItem} from '../Home/CheapestHouses.type';
 import {shapeIcon} from '../../../../data';
 import ApiRequest from '../../module/Api_url/ApiRequest';
+import {useQuery} from '@tanstack/react-query';
 
 export default function Property() {
   const [icon] = useState(shapeIcon);
   const {propertyID} = useParams();
-  const [popularItems, setPopularItems] = useState<CheapestHousesItem[]>([]);
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const response = await ApiRequest<CheapestHousesItem[]>('/popular-features-items');
-      setPopularItems(response.data);
-    };
-    fetchPosts();
-  }, []);
-  const item = popularItems.find((property) => property.id == Number(propertyID));
+  const {data: response} = useQuery({
+    queryKey: ['popularItems'],
+    queryFn: () => ApiRequest<CheapestHousesItem[]>('/popular-features-items'),
+  });
+  const popularItems = response?.data;
+  const item = popularItems?.find((property) => property.id == Number(propertyID));
 
   return (
     <>
