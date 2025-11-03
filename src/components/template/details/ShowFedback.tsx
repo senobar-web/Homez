@@ -1,9 +1,8 @@
-import {useState, useEffect} from 'react';
 import {FaCircleUser} from 'react-icons/fa6';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faStar} from '@fortawesome/free-solid-svg-icons';
 import ApiRequest from '../../module/Api_url/ApiRequest';
-
+import {useQuery} from '@tanstack/react-query';
 type ShowFedbackProps = {
   id: number;
   name: string;
@@ -11,15 +10,11 @@ type ShowFedbackProps = {
   viewpoint: string;
 };
 export default function ShowFedback() {
-  const [userMessage, setUserMessage] = useState<ShowFedbackProps[]>([]);
-  const fetchPosts = async () => {
-    const response = await ApiRequest<ShowFedbackProps[]>('/comments');
-    setUserMessage(response.data);
-  };
-  useEffect(() => {
-    fetchPosts();
-  }, []);
-
+  const {data: response} = useQuery({
+    queryKey: ['comments'],
+    queryFn: () => ApiRequest<ShowFedbackProps[]>('/comments'),
+  });
+  const userMessage = response?.data;
   return (
     <>
       {userMessage && (

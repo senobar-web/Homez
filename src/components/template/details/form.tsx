@@ -1,9 +1,18 @@
 import DatePicker from 'react-multi-date-picker';
 import persian from 'react-date-object/calendars/persian';
 import persian_fa from 'react-date-object/locales/persian_fa';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import ApiRequest from '../../module/Api_url/ApiRequest';
+import {useMutation} from '@tanstack/react-query';
 
+interface TourRequestData {
+  username: string;
+  email: string;
+  phone: string;
+  message: string;
+  selectedTime: string;
+  value: Date;
+}
 export default function Form() {
   const [value, setValue] = useState(new Date());
   const [username, setUsername] = useState('');
@@ -20,7 +29,14 @@ export default function Form() {
   const handleTimeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedTime(event.target.value);
   };
-  const handelSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const mutation = useMutation({
+    mutationFn: async (data: TourRequestData) => {
+      const response = await ApiRequest('/tour-request-form', 'POST', data);
+      return response;
+    },
+  });
+
+  const handelSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const newData = {
       username,
@@ -30,15 +46,21 @@ export default function Form() {
       value,
       selectedTime,
     };
-    const response = await ApiRequest('/tour-request-form', 'POST', newData);
-    if (response.status === 201) {
+    mutation.mutate(newData);
+  };
+  useEffect(() => {
+    if (mutation.isSuccess) {
+      alert('درخواست ارسال شد');
       setEmail('');
       setUsername('');
       setPhone('');
       setMessage('');
-      alert('sent request');
     }
-  };
+    if (mutation.isError) {
+      alert('Error sending: ' + (mutation.error as Error).message);
+    }
+  }, [mutation.isSuccess, mutation.isError]);
+
   const generateTimeOptions = () => {
     const options = [];
     for (let hour = 0; hour < 24; hour++) {
@@ -126,7 +148,10 @@ export default function Form() {
               onChange={(e) => setMessage(e.target.value)}
             ></textarea>
           </div>
-          <button type="submit" className="text-white bg-red rounded-lg text-sm w-full px-5 py-2.5 text-center ">
+          <button
+            type="submit"
+            className="text-white bg-red hover:bg-white border border-red cursor-pointer py-4 hover:text-red  font-medium rounded-lg text-sm px-5  text-center w-full transition-all  duration-200 ease-in  "
+          >
             درخواست تور را اسال کنید
           </button>
         </form>

@@ -1,17 +1,36 @@
 import React from 'react';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import ApiRequest from '../../module/Api_url/ApiRequest';
+import type {ApiResponse} from '../../module/Api_url/ApiRequest';
+import {useMutation} from '@tanstack/react-query';
+
+interface SubscribeResponse {
+  email: string;
+}
 export default function Newsletter() {
   const [email, setEmail] = useState('');
+  const mutation = useMutation<ApiResponse<SubscribeResponse>, Error, string>({
+    mutationFn: async (email: string) => {
+      const newEmail = {email};
+      const response = await ApiRequest('/newsletter', 'POST', newEmail);
+      return response;
+    },
+  });
+
   const handelSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const newEmail = {email};
-    const response = await ApiRequest('/newsletter', 'POST', newEmail);
-    if (response.status === 201) {
-      setEmail('');
-      alert('  شد ارسال');
-    }
+    mutation.mutate(email);
   };
+  useEffect(() => {
+    if (mutation.isSuccess) {
+      alert('ایمیل با موفقیت ارسال شد');
+      setEmail('');
+    }
+    if (mutation.isError) {
+      alert('Error sending: ' + (mutation.error as Error).message);
+    }
+  }, [mutation.isSuccess, mutation.isError]);
+
   return (
     <div>
       <div>
@@ -29,7 +48,7 @@ export default function Newsletter() {
             />
             <button
               type="submit"
-              className="text-white absolute end-2.5 bottom-2.5  hover:text-red-dark  font-medium  text-sm px-6 py-4    "
+              className="hover:cursor-pointer text-white absolute end-2.5 bottom-2.5  hover:text-red-dark  font-medium  text-sm px-6 py-4    "
             >
               عضویت !
             </button>
