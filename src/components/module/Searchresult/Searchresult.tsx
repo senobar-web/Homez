@@ -7,9 +7,10 @@ export default function Searchresult() {
   const [filterData, setFilterData] = useState(contextData.allRealEstate);
   const handelInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
-    const filterEstate = contextData.allRealEstate.filter((item) => {
-      item.title.includes(searchValue) || item.city.includes(searchValue) || item.category.includes(searchValue);
-    });
+    const filterEstate = contextData.allRealEstate.filter(
+      (item) =>
+        item.title.includes(searchValue) || item.city.includes(searchValue) || item.category.includes(searchValue)
+    );
     setFilterData(filterEstate);
   };
   return (
@@ -17,7 +18,6 @@ export default function Searchresult() {
       <input
         type="text"
         className="text-gray-700 "
-        // required
         placeholder="جستجو بر اساس آدرس،استان، شهر، نام ملک"
         value={searchValue}
         onChange={handelInputChange}
