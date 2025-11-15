@@ -1,18 +1,21 @@
-import {useForm} from 'react-hook-form';
 import NorthWestIcon from '@mui/icons-material/NorthWest';
-import {useState} from 'react';
 import type {loginInput} from './LoginInput.type';
+import {useFormMutation} from '../../../hooks/useForm';
 
 export default function LoginForm() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const {
-    register,
-    formState: {errors},
-  } = useForm<loginInput>();
+  const {register, handleSubmit, errors, onSubmit} = useFormMutation<loginInput>({
+    endpoint: '/login',
+    successMessage: 'ورود با موفقیت انجام شد',
+    defaultValues: {
+      username: '',
+      password: '',
+      email: '',
+    },
+  });
+
   return (
     <>
-      <form className="w-full mx-auto p-5">
+      <form className="w-full mx-auto p-5" onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-5">
           <label htmlFor="email" className="block mb-2 text-sm font-medium text-black ">
             نام کاربری یا آدرس ایمیل
@@ -21,8 +24,6 @@ export default function LoginForm() {
             type="text"
             {...register('username', {required: 'نام کاربری را وارد نمایید'})}
             id="email"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
             className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg  focus:border-black  block w-full px-2.5 py-4 "
           />
           {errors.username && <span>{errors.username.message}</span>}
@@ -41,8 +42,6 @@ export default function LoginForm() {
               },
             })}
             id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
             className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg  focus:border-black block w-full px-2.5 py-4 "
           />
           {errors.password && <span>{errors.password.message}</span>}
@@ -55,7 +54,6 @@ export default function LoginForm() {
                 type="checkbox"
                 value=""
                 className="w-4 h-4 border bg-white  text-white rounded-sm "
-                required
               />
             </div>
             <label htmlFor="remember" className="ms-2 text-sm font-medium text-black ">
