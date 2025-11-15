@@ -8,6 +8,7 @@ type ShowFedbackProps = {
   name: string;
   rating: number;
   viewpoint: string;
+  createdAt: string;
 };
 export default function ShowFedback() {
   const {data: response} = useQuery({
@@ -29,7 +30,7 @@ export default function ShowFedback() {
                       <FaCircleUser className="w-20 h-20 text-gray-300" />
                       <div>
                         <p> {item.name} </p>
-                        <p>۱۴ بهمن ۱۴۰</p>
+                        <p>{new Date(item.createdAt).toLocaleDateString('fa')} </p>
                       </div>
                     </div>
                     <div className="flex">
