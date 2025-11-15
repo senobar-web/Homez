@@ -11,6 +11,7 @@ Real estate platform for listing and exploring properties efficiently.
 - TypeScript
 - Axios (for API calls)
 - React Query
+- React Hook Form
 - Vite.js
 - Tailwind CSS
 - JSON Server
