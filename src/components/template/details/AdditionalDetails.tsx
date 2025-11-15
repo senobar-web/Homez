@@ -1,7 +1,7 @@
 import ReadMoreText from '../../module/Readmore/ReadMore';
 import Comments from './Comments';
 import Form from './form';
-
+import {ToastContainer} from 'react-toastify';
 export default function AdditionalDetails() {
   const longText =
     ' لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله  در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید است';
@@ -40,6 +40,7 @@ export default function AdditionalDetails() {
           </div>
         </div>
       </div>
+      <ToastContainer position="bottom-left" />
     </>
   );
 }
