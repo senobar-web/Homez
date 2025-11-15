@@ -4,7 +4,7 @@ import Newsletter from '../../template/Footer/Newsletter';
 import City from '../../template/Footer/City';
 import Access from '../../template/Footer/Access';
 import PopularSearch from '../../template/Footer/PopularSearch';
-
+import {ToastContainer} from 'react-toastify';
 export default function Footer() {
   return (
     <>
@@ -29,6 +29,7 @@ export default function Footer() {
           <CopyRight />
         </div>
       </footer>
+      <ToastContainer position="top-right" autoClose={3000} rtl />
     </>
   );
 }
