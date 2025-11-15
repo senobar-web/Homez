@@ -48,7 +48,6 @@ export default function Comments() {
   useEffect(() => {
     const savedName = localStorage.getItem('User_name');
     const savedEmail = localStorage.getItem('User_email');
-
     if (savedName && savedEmail) {
       setValue('name', savedName);
       setValue('email', savedEmail);
