@@ -3,7 +3,7 @@ import Form from '../../module/Form/Form';
 import Contact from '../../module/Contact/Contact';
 import TopHeader from '../../module/TopHeader/TopHeader';
 import Map from '../../template/contactUs/Map';
-
+import {ToastContainer} from 'react-toastify';
 export default function ContactUs() {
   return (
     <>
@@ -26,6 +26,7 @@ export default function ContactUs() {
       </section>
       <Contact />
       <Footer />
+      <ToastContainer position="top-right" rtl />
     </>
   );
 }

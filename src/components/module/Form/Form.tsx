@@ -1,8 +1,5 @@
-import React from 'react';
-import {useState, useEffect} from 'react';
-import ApiRequest from '../Api_url/ApiRequest';
-import {useMutation} from '@tanstack/react-query';
 import AOSInit from '../aos/aos';
+import {useFormMutation} from '../../../hooks/useForm';
 
 interface ContactData {
   firstname: string;
@@ -11,43 +8,22 @@ interface ContactData {
   body: string;
 }
 export default function Form() {
-  const [firstname, setFirstname] = useState('');
-  const [email, setEmail] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [body, setBody] = useState('');
-  const mutation = useMutation({
-    mutationFn: async (data: ContactData) => {
-      const response = await ApiRequest('/contact-form', 'POST', data);
-      return response;
+  const {register, handleSubmit, errors, onSubmit, mutation} = useFormMutation<ContactData>({
+    endpoint: '/contact-form',
+    successMessage: 'درخواست ارسال شد',
+    defaultValues: {
+      firstname: '',
+      lastName: '',
+      email: '',
+      body: '',
     },
   });
-  const handelSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const newPost = {
-      firstname,
-      lastName,
-      email,
-      body,
-    };
-    mutation.mutate(newPost);
-  };
-  useEffect(() => {
-    if (mutation.isSuccess) {
-      alert('درخواست ارسال شد');
-      setFirstname('');
-      setLastName('');
-      setBody('');
-      setEmail('');
-    }
-    if (mutation.isError) {
-      alert('Error sending: ' + (mutation.error as Error).message);
-    }
-  }, [mutation.isSuccess, mutation.isError]);
+
   return (
     <>
       <AOSInit />
       <form
-        onSubmit={handelSubmit}
+        onSubmit={handleSubmit(onSubmit)}
         className=" w-full md:w-[450px] mt-10 lg:-mt-60 border bg-white border-gray-200 px-6 py-6 rounded-xl "
         data-aos="zoom-in"
       >
@@ -59,11 +35,13 @@ export default function Form() {
           <input
             type="text"
             id="username"
+            {...register('firstname', {
+              required: 'نام الزامی است',
+              minLength: {value: 2, message: 'نام باید حداقل ۲ حرف باشد'},
+            })}
             className="shadow-xs  border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-4 "
-            required
-            value={firstname}
-            onChange={(e) => setFirstname(e.target.value)}
           />
+          {errors.firstname && <p className="text-red-500 text-sm mt-1">{errors.firstname.message}</p>}
         </div>
         <div className="mb-5">
           <label htmlFor="lastName" className="block mb-2 text-sm font-medium text-gray-900 ">
@@ -72,11 +50,13 @@ export default function Form() {
           <input
             type="text"
             id="lastName"
+            {...register('lastName', {
+              required: 'نام خانوادگی الزامی است',
+              minLength: {value: 2, message: 'نام خانوادگی باید حداقل ۲ حرف باشد'},
+            })}
             className="shadow-xs  border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-4 "
-            required
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
           />
+          {errors.lastName && <p className="text-red-500 text-sm mt-1">{errors.lastName.message}</p>}
         </div>
         <div className="mb-5">
           <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 ">
@@ -85,11 +65,16 @@ export default function Form() {
           <input
             type="email"
             id="email"
-            className="shadow-xs  border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-4 "
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            {...register('email', {
+              required: 'ایمیل الزامی است',
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: 'ایمیل معتبر نیست',
+              },
+            })}
+            className="shadow-xs  border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-4"
           />
+          {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
         </div>
         <div className="mb-5">
           <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 ">
@@ -97,17 +82,19 @@ export default function Form() {
           </label>
           <textarea
             id="message"
+            {...register('body', {
+              required: 'متن پیام الزامی است',
+              minLength: {value: 10, message: 'پیام باید حداقل ۱۰ حرف باشد'},
+            })}
             className="shadow-xs  border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-4 h-[150px] "
-            required
-            value={body}
-            onChange={(e) => setBody(e.target.value)}
           />
+          {errors.body && <p className="text-red-500 text-sm mt-1">{errors.body.message}</p>}
         </div>
         <button
           type="submit"
           className="text-white bg-red hover:bg-white border border-red cursor-pointer py-4 hover:text-red  font-medium rounded-lg text-sm px-5  text-center w-full transition-all  duration-200 ease-in  "
         >
-          ارسال
+          {mutation.isPending ? 'در حال ارسال...' : 'ارسال'}
         </button>
       </form>
     </>
